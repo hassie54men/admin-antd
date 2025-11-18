@@ -1,22 +1,20 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
   plugins: [react()],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./tests/setup.ts"],
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "@core": path.resolve(__dirname, "./src/core"),
       "@shared": path.resolve(__dirname, "./src/shared"),
       "@features": path.resolve(__dirname, "./src/features"),
-      "@layouts": path.resolve(__dirname, "./src/layouts"),
-      "@pages": path.resolve(__dirname, "./src/pages"),
-      "@i18n": path.resolve(__dirname, "./src/i18n"),
     },
-  },
-  server: {
-    port: 3000,
-    strictPort: false,
   },
 });
