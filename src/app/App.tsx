@@ -9,6 +9,8 @@ function App() {
         <Route path="login" element={<div>LOGIN</div>} />
         <Route path="register" element={<div>REGISTER</div>} />
       </Route>
+
+      <Route path="*" element={<div>NotFound</div>} />
     </Routes>
   );
 }
