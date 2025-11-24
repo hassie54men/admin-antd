@@ -1,8 +1,9 @@
 import { Form, Input } from "antd";
 import { useNavigate } from "react-router";
-import { getUser, login } from "../model/auth.api.ts";
 import type { LoginParams } from "../model/auth.types.ts";
 import LoginButton from "../ui/LoginButton.tsx";
+import { useLoginMutation } from "../model/auth.mutations.ts";
+import { useGetUserQuery } from "../model/auth.queries.ts";
 
 type FieldType = {
   username?: string;
@@ -24,13 +25,14 @@ const styles = {
 };
 
 const Login = () => {
+  const loginMutation = useLoginMutation();
+  const userQuery = useGetUserQuery();
   const onFinish = async (values: LoginParams) => {
-    await login(values);
-    console.log(values);
+    await loginMutation.mutateAsync(values);
 
-    const user = await getUser();
-    if (user) {
-      navigate("/user");
+    const userRes = await userQuery.refetch();
+    if (userRes) {
+      navigate("/");
     }
   };
   const navigate = useNavigate();
