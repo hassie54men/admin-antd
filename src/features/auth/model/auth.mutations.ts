@@ -1,0 +1,14 @@
+import { useMutation } from "@tanstack/react-query";
+import { login, logout } from "./auth.api.ts";
+
+export function useLoginMutation() {
+  return useMutation({
+    mutationFn: login,
+  });
+}
+
+export function useLogoutMutation() {
+  return useMutation({
+    mutationFn: logout,
+  });
+}
