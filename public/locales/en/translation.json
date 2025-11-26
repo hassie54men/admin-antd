@@ -1,7 +1,8 @@
 {
   "text": {
     "hello": "hello my friend",
-    "name": "your name {{ name}}"
+    "name": "your name {{ name}}",
+    "login": "Login"
   },
 
   "changeLang": "change language"
