@@ -1,5 +1,4 @@
 import { Button, Form, Input } from "antd";
-import { useNavigate } from "react-router";
 import type { LoginParams } from "../model/auth.types.ts";
 import { useLoginMutation } from "../model/auth.mutations.ts";
 
@@ -27,7 +26,7 @@ const Login = () => {
   const onFinish = async (values: LoginParams) => {
     loginMutation(values);
   };
-  const navigate = useNavigate();
+
   return (
     <section style={styles.section}>
       <Form name="basic" initialValues={{ remember: true }} onFinish={onFinish}>
@@ -54,7 +53,6 @@ const Login = () => {
             <Button htmlType="submit" loading={isPending}>
               Отправить
             </Button>
-            <Button onClick={() => navigate("/")}> Назад </Button>
           </div>
         </Form.Item>
       </Form>
