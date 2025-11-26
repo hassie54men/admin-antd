@@ -6,6 +6,6 @@ export function useLoginMutation() {
   const navigate = useNavigate();
   return useMutation({
     mutationFn: login,
-    onSuccess: () => navigate("/"),
+    onSuccess: () => navigate("/admin"),
   });
 }
