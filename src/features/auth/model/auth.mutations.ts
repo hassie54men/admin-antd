@@ -1,14 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
-import { login, logout } from "./auth.api.ts";
+import { login } from "./auth.api.ts";
+import { useNavigate } from "react-router";
 
 export function useLoginMutation() {
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: login,
-  });
-}
-
-export function useLogoutMutation() {
-  return useMutation({
-    mutationFn: logout,
+    onSuccess: () => navigate("/"),
   });
 }

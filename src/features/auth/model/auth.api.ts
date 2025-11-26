@@ -18,16 +18,11 @@ export async function login({ username, password }: LoginParams) {
   }
 }
 
-export async function logout() {
+export function logout() {
   localStorage.removeItem("accessToken");
 }
 
 export async function getUser() {
-  const token = localStorage.getItem("accessToken");
-  const res = await apiClient.get<AuthResponse>("/auth/me", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await apiClient.get<AuthResponse>("/auth/me");
   return res.data;
 }
