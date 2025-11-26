@@ -1,14 +1,12 @@
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router";
 import type { LoginParams } from "../model/auth.types.ts";
-import LoginButton from "../ui/LoginButton.tsx";
 import { useLoginMutation } from "../model/auth.mutations.ts";
-import { useGetUserQuery } from "../model/auth.queries.ts";
 
 type FieldType = {
   username?: string;
-  password?: string;
-  remember?: string;
+  password: string;
+  remember: string;
 };
 
 const styles = {
@@ -25,25 +23,14 @@ const styles = {
 };
 
 const Login = () => {
-  const loginMutation = useLoginMutation();
-  const userQuery = useGetUserQuery();
+  const { mutate: loginMutation, isPending } = useLoginMutation();
   const onFinish = async (values: LoginParams) => {
-    await loginMutation.mutateAsync(values);
-
-    const userRes = await userQuery.refetch();
-    if (userRes) {
-      navigate("/");
-    }
+    loginMutation(values);
   };
   const navigate = useNavigate();
   return (
     <section style={styles.section}>
-      <Form
-        name="basic"
-        initialValues={{ remember: true }}
-        autoComplete="off"
-        onFinish={onFinish}
-      >
+      <Form name="basic" initialValues={{ remember: true }} onFinish={onFinish}>
         <Form.Item<FieldType>
           label="Username"
           name="username"
@@ -64,8 +51,10 @@ const Login = () => {
         </Form.Item>
         <Form.Item wrapperCol={{ span: 24 }}>
           <div style={styles.button}>
-            <LoginButton htmlType="submit"> Отправить </LoginButton>
-            <LoginButton onClick={() => navigate("/")}> Назад </LoginButton>
+            <Button htmlType="submit" loading={isPending}>
+              Отправить
+            </Button>
+            <Button onClick={() => navigate("/")}> Назад </Button>
           </div>
         </Form.Item>
       </Form>
