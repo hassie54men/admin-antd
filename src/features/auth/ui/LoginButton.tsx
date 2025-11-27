@@ -12,6 +12,7 @@ const LoginButton = () => {
   const handleLogout = async () => {
     logout();
     await refetch();
+    navigate("/login");
   };
 
   const navigateToLogin = () => {
