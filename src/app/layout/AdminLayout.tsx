@@ -3,6 +3,7 @@ import Sider from "antd/es/layout/Sider";
 import { Content, Header } from "antd/es/layout/layout";
 import { Outlet } from "react-router";
 import LoginButton from "../../features/auth/ui/LoginButton.tsx";
+import LocaleSwitcher from "../../features/auth/ui/LocaleSwitcher.tsx";
 
 const AdminLayout = () => {
   return (
@@ -32,14 +33,14 @@ const AdminLayout = () => {
       <Layout>
         <Header
           style={{
-            padding: "10px",
+            padding: "30px",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
           <LoginButton />
-          <p style={{ color: "white" }}>AdminPanel</p>
+          <LocaleSwitcher />
         </Header>
         <Content
           style={{
