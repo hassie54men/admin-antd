@@ -1,15 +1,10 @@
-import { Button, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content, Header } from "antd/es/layout/layout";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet } from "react-router";
+import LoginButton from "../../features/auth/ui/LoginButton.tsx";
 
 const AdminLayout = () => {
-  const navigate = useNavigate();
-  const handleButton = () => {
-    localStorage.removeItem("accessToken");
-    navigate("/login");
-  };
-
   return (
     <Layout>
       <Sider trigger={null}>
@@ -43,9 +38,7 @@ const AdminLayout = () => {
             alignItems: "center",
           }}
         >
-          <Button type="primary" onClick={handleButton}>
-            Logout
-          </Button>
+          <LoginButton />
           <p style={{ color: "white" }}>AdminPanel</p>
         </Header>
         <Content

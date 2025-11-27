@@ -1,13 +1,10 @@
 import { Navigate, Outlet } from "react-router";
-
-const useAuth = () => {
-  return Boolean(localStorage.getItem("accessToken"));
-};
+import { useGetUserQuery } from "../../features/auth/model/auth.queries.ts";
 
 const ProtectedRoute = () => {
-  const isAuth = useAuth();
+  const { isEnabled } = useGetUserQuery();
 
-  if (!isAuth) {
+  if (!isEnabled) {
     return <Navigate to="/login" replace />;
   }
   return <Outlet />;
