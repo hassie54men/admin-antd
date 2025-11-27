@@ -21,11 +21,11 @@ const LoginButton = () => {
   if (!user || isError) {
     return (
       <Button type="primary" color="primary" onClick={navigateToLogin}>
-        {t("Login")}
+        {t("text.login")}
       </Button>
     );
   }
-  return <Button onClick={handleLogout}>Logout</Button>;
+  return <Button onClick={handleLogout}>{t("text.logout")}</Button>;
 };
 
 export default LoginButton;
