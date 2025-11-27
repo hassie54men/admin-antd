@@ -2,7 +2,11 @@
   "text": {
     "hello": "привет мой друг",
     "name": "тебя зовут {{ name}}",
-    "login": "Войти"
+    "login": "Войти",
+    "logout": "Выйти",
+    "language": "RU",
+    "languagesLabel": "Язык",
+    "admin": "Админ"
   },
 
   "changeLang": "сменить язык"
