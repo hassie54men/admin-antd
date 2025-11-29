@@ -1,6 +1,7 @@
 import LoginButton from "../ui/LoginButton.tsx";
 import LocaleSwitcher from "../ui/LocaleSwitcher.tsx";
 import { Header } from "antd/es/layout/layout";
+import UserMenu from "../ui/UserMenu.tsx";
 
 const AdminHeader = () => {
   return (
@@ -14,6 +15,7 @@ const AdminHeader = () => {
     >
       <LoginButton />
       <LocaleSwitcher />
+      <UserMenu />
     </Header>
   );
 };
