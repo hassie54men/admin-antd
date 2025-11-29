@@ -1,9 +1,8 @@
 import { Layout, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
-import { Content, Header } from "antd/es/layout/layout";
+import { Content } from "antd/es/layout/layout";
 import { Outlet } from "react-router";
-import LoginButton from "../../features/auth/ui/LoginButton.tsx";
-import LocaleSwitcher from "../../features/auth/ui/LocaleSwitcher.tsx";
+import AdminHeader from "../../features/auth/pages/AdminHeader.tsx";
 
 const AdminLayout = () => {
   return (
@@ -31,17 +30,7 @@ const AdminLayout = () => {
         />
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: "30px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <LoginButton />
-          <LocaleSwitcher />
-        </Header>
+        <AdminHeader />
         <Content
           style={{
             margin: "24px 16px",
