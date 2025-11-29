@@ -1,4 +1,4 @@
-import type { AuthResponse, LoginParams } from "./auth.types.ts";
+import type { AuthResponse, LoginParams, User } from "./auth.types.ts";
 import apiClient from "../../../api/apiClient.ts";
 
 export async function login({ username, password }: LoginParams) {
@@ -23,6 +23,6 @@ export function logout() {
 }
 
 export async function getUser() {
-  const res = await apiClient.get<AuthResponse>("/auth/me");
+  const res = await apiClient.get<User>("/auth/me");
   return res.data;
 }
