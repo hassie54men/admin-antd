@@ -1,35 +1,25 @@
 import { Dropdown, type MenuProps, Space } from "antd";
 import { useTranslation } from "react-i18next";
+import { LANGUAGES_LIST } from "../../../config/languages.ts";
 
 function DownOutlined() {
   return null;
 }
 
 const LocaleSwitcher = () => {
-  const { i18n, t } = useTranslation();
-  const changeLanguage = async (lng: string) => {
-    await i18n.changeLanguage(lng);
-  };
-  const items: MenuProps["items"] = [
-    {
-      key: "label",
-      type: "group",
-      label: t("text.languagesLabel"),
-    },
-    {
-      label: <span onClick={() => changeLanguage("en")}>English</span>,
-      key: "en",
-    },
-    {
-      label: <span onClick={() => changeLanguage("ru")}>Русский</span>,
-      key: "ru",
-    },
-  ];
+  const { i18n } = useTranslation();
+  const items: MenuProps["items"] = LANGUAGES_LIST.map(({ key, label }) => ({
+    key,
+    label,
+    onClick: () => i18n.changeLanguage(key),
+  }));
+
   return (
     <Dropdown menu={{ items }} trigger={["click"]}>
       <a onClick={(e) => e.preventDefault()}>
         <Space>
-          {t("text.language")}
+          {LANGUAGES_LIST.find((lang) => lang.key === i18n.language)?.label ||
+            "..."}
           <DownOutlined />
         </Space>
       </a>
