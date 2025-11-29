@@ -17,14 +17,6 @@ const UserMenu = () => {
       type: "group",
       label: data?.firstName ?? "User",
     },
-    {
-      label: <span>English</span>,
-      key: "en",
-    },
-    {
-      label: <span>Русский</span>,
-      key: "ru",
-    },
   ];
   return (
     <Dropdown menu={{ items }} trigger={["click"]}>
