@@ -1,6 +1,7 @@
 export interface User {
   username: string;
   email: string;
+  firstName: string;
 }
 
 export interface LoginParams {
