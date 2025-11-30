@@ -6,7 +6,8 @@
     "logout": "Выйти",
     "language": "RU",
     "languagesLabel": "Язык",
-    "admin": "Админ"
+    "admin": "Админ",
+    "lang.ru": "Русский"
   },
 
   "changeLang": "сменить язык"
