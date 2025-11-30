@@ -6,7 +6,10 @@
     "logout": "Logout",
     "language": "EN",
     "languagesLabel": "Language",
-    "admin": "Admin"
+    "admin": "Admin",
+    "lang.en": "English",
+    "personalInformation": "Personal information",
+    "security": "Security"
   },
 
   "changeLang": "change language"
