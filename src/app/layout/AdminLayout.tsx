@@ -5,6 +5,11 @@ import { Outlet } from "react-router";
 import AdminHeader from "../../features/auth/pages/AdminHeader.tsx";
 
 const AdminLayout = () => {
+  const style = {
+    margin: "24px 16px",
+    padding: 24,
+    minHeight: 280,
+  };
   return (
     <Layout>
       <Sider trigger={null}>
@@ -31,13 +36,7 @@ const AdminLayout = () => {
       </Sider>
       <Layout>
         <AdminHeader />
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-          }}
-        >
+        <Content style={style}>
           <Outlet />
         </Content>
       </Layout>
