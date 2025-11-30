@@ -1,22 +1,20 @@
 import LoginButton from "../ui/LoginButton.tsx";
 import LocaleSwitcher from "../ui/LocaleSwitcher.tsx";
-import { Header } from "antd/es/layout/layout";
+import { Flex, theme } from "antd";
 import UserMenu from "../ui/UserMenu.tsx";
 
 const AdminHeader = () => {
+  const { token } = theme.useToken();
+  const style = {
+    padding: token.paddingLG,
+    background: token.colorBgLayout,
+  };
   return (
-    <Header
-      style={{
-        padding: "30px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
+    <Flex justify="space-between" align="center" style={style}>
       <LoginButton />
       <LocaleSwitcher />
       <UserMenu />
-    </Header>
+    </Flex>
   );
 };
 
