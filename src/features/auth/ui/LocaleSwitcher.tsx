@@ -7,7 +7,7 @@ function DownOutlined() {
 }
 
 const LocaleSwitcher = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const items: MenuProps["items"] = LANGUAGES_LIST.map(({ key, label }) => ({
     key,
     label,
@@ -18,8 +18,7 @@ const LocaleSwitcher = () => {
     <Dropdown menu={{ items }} trigger={["click"]}>
       <a onClick={(e) => e.preventDefault()}>
         <Space>
-          {LANGUAGES_LIST.find((lang) => lang.key === i18n.language)?.label ||
-            "..."}
+          {t(`text.lang.${i18n.language}`)}
           <DownOutlined />
         </Space>
       </a>
