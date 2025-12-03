@@ -7,7 +7,9 @@
     "language": "RU",
     "languagesLabel": "Язык",
     "admin": "Админ",
-    "lang.ru": "Русский"
+    "lang.ru": "Русский",
+    "personalInformation": "Личные данные",
+    "security": "Безопасность"
   },
 
   "changeLang": "сменить язык"

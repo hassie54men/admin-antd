@@ -7,7 +7,9 @@
     "language": "EN",
     "languagesLabel": "Language",
     "admin": "Admin",
-    "lang.en": "English"
+    "lang.en": "English",
+    "personalInformation": "Personal information",
+    "security": "Security"
   },
 
   "changeLang": "change language"
