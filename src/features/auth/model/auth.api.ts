@@ -1,7 +1,10 @@
 import type { AuthResponse, LoginParams, User } from "./auth.types.ts";
 import apiClient from "../../../api/apiClient.ts";
 import { ENDPOINTS } from "../../../api/endpoints.ts";
-import { ACCESS_TOKEN_STORAGE_NAME } from "../../../shared/constants/storage.ts";
+import {
+  ACCESS_TOKEN_STORAGE_NAME,
+  REFRESH_TOKEN_STORAGE_NAME,
+} from "../../../shared/constants/storage.ts";
 
 export async function login({ username, password }: LoginParams) {
   try {
@@ -12,6 +15,7 @@ export async function login({ username, password }: LoginParams) {
 
     if (res.data?.accessToken) {
       localStorage.setItem(ACCESS_TOKEN_STORAGE_NAME, res.data.accessToken);
+      localStorage.setItem(REFRESH_TOKEN_STORAGE_NAME, res.data.refreshToken);
     }
 
     return res.data;
@@ -22,6 +26,7 @@ export async function login({ username, password }: LoginParams) {
 
 export function logout() {
   localStorage.removeItem(ACCESS_TOKEN_STORAGE_NAME);
+  localStorage.removeItem(REFRESH_TOKEN_STORAGE_NAME);
 }
 
 export async function getUser() {

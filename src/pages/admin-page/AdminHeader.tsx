@@ -11,7 +11,12 @@ const AdminHeader = () => {
 
   return (
     <Header>
-      <Flex justify="flex-end" align="center" gap={paddingLG}>
+      <Flex
+        justify="flex-end"
+        align="center"
+        gap={paddingLG}
+        style={{ height: "100%" }}
+      >
         <LocaleSwitcher />
         <UserMenu />
       </Flex>
