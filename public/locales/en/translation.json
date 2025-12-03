@@ -2,7 +2,12 @@
   "text": {
     "hello": "hello my friend",
     "name": "your name {{ name}}",
-    "login": "Login"
+    "login": "Login",
+    "logout": "Logout",
+    "language": "EN",
+    "languagesLabel": "Language",
+    "admin": "Admin",
+    "lang.en": "English"
   },
 
   "changeLang": "change language"

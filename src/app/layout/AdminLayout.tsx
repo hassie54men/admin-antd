@@ -1,10 +1,15 @@
 import { Layout, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
-import { Content, Header } from "antd/es/layout/layout";
+import { Content } from "antd/es/layout/layout";
 import { Outlet } from "react-router";
-import LoginButton from "../../features/auth/ui/LoginButton.tsx";
+import AdminHeader from "../../features/auth/pages/AdminHeader.tsx";
 
 const AdminLayout = () => {
+  const style = {
+    margin: "24px 16px",
+    padding: 24,
+    minHeight: 280,
+  };
   return (
     <Layout>
       <Sider trigger={null}>
@@ -30,24 +35,8 @@ const AdminLayout = () => {
         />
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: "10px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <LoginButton />
-          <p style={{ color: "white" }}>AdminPanel</p>
-        </Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-          }}
-        >
+        <AdminHeader />
+        <Content style={style}>
           <Outlet />
         </Content>
       </Layout>
