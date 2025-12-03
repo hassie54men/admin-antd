@@ -1,10 +1,15 @@
 import { Dropdown, type MenuProps, Space } from "antd";
 import { useTranslation } from "react-i18next";
-import { LANGUAGES_LIST } from "../../../config/languages.ts";
+import { Languages } from "../types/common.ts";
 
 function DownOutlined() {
   return null;
 }
+
+const LANGUAGES_LIST = [
+  { key: Languages.RU, label: "Русский" },
+  { key: Languages.EN, label: "English" },
+];
 
 const LocaleSwitcher = () => {
   const { i18n, t } = useTranslation();

@@ -1,5 +1,5 @@
 import LoginButton from "../ui/LoginButton.tsx";
-import LocaleSwitcher from "../ui/LocaleSwitcher.tsx";
+import LocaleSwitcher from "../../../shared/ui/LocaleSwitcher.tsx";
 import { Flex, theme } from "antd";
 import UserMenu from "../ui/UserMenu.tsx";
 
