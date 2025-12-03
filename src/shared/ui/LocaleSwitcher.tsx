@@ -1,10 +1,6 @@
-import { Dropdown, type MenuProps, Space } from "antd";
+import { Button, Dropdown, type MenuProps } from "antd";
 import { useTranslation } from "react-i18next";
 import { Languages } from "../types/common.ts";
-
-function DownOutlined() {
-  return null;
-}
 
 const LANGUAGES_LIST = [
   { key: Languages.RU, label: "Русский" },
@@ -20,13 +16,8 @@ const LocaleSwitcher = () => {
   }));
 
   return (
-    <Dropdown menu={{ items }} trigger={["click"]}>
-      <a onClick={(e) => e.preventDefault()}>
-        <Space>
-          {t(`text.lang.${i18n.language}`)}
-          <DownOutlined />
-        </Space>
-      </a>
+    <Dropdown menu={{ items, style: { width: 120 } }} trigger={["click"]}>
+      <Button variant={"solid"}>{t(`text.lang.${i18n.language}`)}</Button>
     </Dropdown>
   );
 };

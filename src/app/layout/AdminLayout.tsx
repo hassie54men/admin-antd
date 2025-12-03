@@ -1,17 +1,17 @@
 import { Layout, Menu } from "antd";
-import Sider from "antd/es/layout/Sider";
-import { Content } from "antd/es/layout/layout";
 import { Outlet } from "react-router";
 import AdminHeader from "../../pages/admin-page/AdminHeader.tsx";
 
+const { Sider, Content } = Layout;
+
 const AdminLayout = () => {
-  const style = {
-    margin: "24px 16px",
-    padding: 24,
-    minHeight: 280,
+  const styles = {
+    content: { margin: "24px 16px", padding: 24, minHeight: 280 },
+    layout: { height: "100vh" },
   };
+
   return (
-    <Layout>
+    <Layout style={styles.layout}>
       <Sider trigger={null}>
         <div className="demo-logo-vertical" />
         <Menu
@@ -36,7 +36,7 @@ const AdminLayout = () => {
       </Sider>
       <Layout>
         <AdminHeader />
-        <Content style={style}>
+        <Content style={styles.content}>
           <Outlet />
         </Content>
       </Layout>
