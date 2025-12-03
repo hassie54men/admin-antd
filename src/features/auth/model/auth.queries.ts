@@ -5,7 +5,6 @@ export function useGetUserQuery() {
   return useQuery({
     queryKey: ["user"],
     queryFn: getUser,
-    enabled: !!localStorage.getItem("accessToken"),
     retry: 0,
   });
 }

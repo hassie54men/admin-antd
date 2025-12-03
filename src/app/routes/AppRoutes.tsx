@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import App from "../App";
+import App from "../App.tsx";
 import AuthLayout from "../layout/AuthLayout.tsx";
 import Login from "../../features/auth/pages/Login.tsx";
 import Home from "../layout/Home.tsx";
