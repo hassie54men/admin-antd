@@ -2,7 +2,7 @@ import { Layout, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
 import { Outlet } from "react-router";
-import AdminHeader from "../../features/auth/pages/AdminHeader.tsx";
+import AdminHeader from "../../pages/admin-page/AdminHeader.tsx";
 
 const AdminLayout = () => {
   const style = {

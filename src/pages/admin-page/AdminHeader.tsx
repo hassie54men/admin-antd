@@ -1,7 +1,7 @@
-import LoginButton from "../ui/LoginButton.tsx";
-import LocaleSwitcher from "../../../shared/ui/LocaleSwitcher.tsx";
+import LoginButton from "../../features/auth/ui/LoginButton.tsx";
+import LocaleSwitcher from "../../shared/ui/LocaleSwitcher.tsx";
 import { Flex, theme } from "antd";
-import UserMenu from "../ui/UserMenu.tsx";
+import UserMenu from "../../features/auth/ui/UserMenu.tsx";
 
 const AdminHeader = () => {
   const { token } = theme.useToken();

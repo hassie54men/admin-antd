@@ -1,7 +1,9 @@
 export interface User {
+  id: number;
   username: string;
   email: string;
   firstName: string;
+  image: string;
 }
 
 export interface LoginParams {
@@ -9,7 +11,7 @@ export interface LoginParams {
   password: string;
 }
 
-export interface AuthResponse {
+export interface AuthResponse extends User {
   accessToken: string;
-  user: User;
+  refreshToken: string;
 }

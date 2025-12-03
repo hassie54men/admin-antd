@@ -2,9 +2,9 @@ import { Route, Routes } from "react-router";
 import App from "../App.tsx";
 import AuthLayout from "../layout/AuthLayout.tsx";
 import Login from "../../features/auth/pages/Login.tsx";
-import Home from "../layout/Home.tsx";
+import Home from "../../pages/home/Home.tsx";
 import AdminLayout from "../layout/AdminLayout.tsx";
-import Admin from "../../features/auth/pages/Admin.tsx";
+import Admin from "../../pages/admin-page/Admin.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 
 const AppRoutes = () => {
