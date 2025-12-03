@@ -6,21 +6,22 @@ import Home from "../../pages/home/Home.tsx";
 import AdminLayout from "../layout/AdminLayout.tsx";
 import Admin from "../../pages/admin-page/Admin.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
+import { ROUTES } from "../../shared/constants/routes.ts";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route path={ROUTES.home} element={<App />}>
         <Route index element={<Home />} />
         <Route element={<AuthLayout />}>
-          <Route path="login" element={<Login />} />
+          <Route path={ROUTES.login} element={<Login />} />
         </Route>
         <Route element={<ProtectedRoute />}>
-          <Route path="admin" element={<AdminLayout />}>
+          <Route path={ROUTES.admin} element={<AdminLayout />}>
             <Route index element={<Admin />} />
           </Route>
         </Route>
-        <Route path="*" element={<div>NotFound</div>} />
+        <Route path={ROUTES.notFound} element={<div>NotFound</div>} />
       </Route>
     </Routes>
   );

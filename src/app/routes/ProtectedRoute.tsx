@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router";
 import { useGetUserQuery } from "../../features/auth/model/auth.queries.ts";
 import { Spin } from "antd";
+import { ROUTES } from "../../shared/constants/routes.ts";
 
 const ProtectedRoute = () => {
   const { data: user, isError, isLoading } = useGetUserQuery();
@@ -14,7 +15,7 @@ const ProtectedRoute = () => {
   }
 
   if (!user || isError) {
-    return <Navigate to={"/login"} />;
+    return <Navigate to={ROUTES.login} />;
   }
 
   return <Outlet />;
