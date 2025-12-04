@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ACCESS_TOKEN_STORAGE_NAME } from "../shared/constants/storage.ts";
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -11,7 +12,7 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem(ACCESS_TOKEN_STORAGE_NAME);
 
     if (token) {
       // в TS желательно проверять headers
