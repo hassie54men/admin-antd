@@ -7,7 +7,7 @@ import AdminLayout from "../layout/AdminLayout.tsx";
 import Admin from "../../pages/admin-page/Admin.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import { ROUTES } from "../../shared/constants/routes.ts";
-import ProductsListPage from "../../features/product/pages/ProductsListPage.tsx";
+import ProductsListPage from "../../features/products/pages/ProductsListPage.tsx";
 
 const AppRoutes = () => {
   return (
