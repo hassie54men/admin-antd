@@ -11,6 +11,14 @@
     "personalInformation": "Личные данные",
     "security": "Безопасность"
   },
+  "table": {
+    "id": "ID",
+    "title": "Название",
+    "category": "Категория",
+    "price": "Цена",
+    "rating": "Рейтинг",
+    "error": "Ошибка при загрузке продуктов"
+  },
 
   "changeLang": "сменить язык"
 }
