@@ -20,10 +20,10 @@ const AppRoutes = () => {
         <Route element={<ProtectedRoute />}>
           <Route path={ROUTES.admin} element={<AdminLayout />}>
             <Route index element={<Admin />} />
+          </Route>
 
-            <Route path={ROUTES.products}>
-              <Route index element={<ProductsListPage />} />
-            </Route>
+          <Route element={<AdminLayout />}>
+            <Route path={ROUTES.products} element={<ProductsListPage />} />
           </Route>
         </Route>
         <Route path={ROUTES.notFound} element={<div>NotFound</div>} />
