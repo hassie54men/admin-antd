@@ -1,9 +1,10 @@
 import apiClient from "../../../api/apiClient.ts";
-import type { Product } from "./product.types.ts";
 import { ENDPOINTS } from "../../../api/endpoints.ts";
-type ProductsResponse = { products: Product[] };
+import type { ProductsListResponse } from "./product.types.ts";
 
-export const getProducts = async (): Promise<Product[]> => {
-  const res = await apiClient.get<ProductsResponse>(ENDPOINTS.admin.products);
-  return res.data.products;
+export const getProducts = async (): Promise<ProductsListResponse> => {
+  const res = await apiClient.get<ProductsListResponse>(
+    ENDPOINTS.products.list,
+  );
+  return res.data;
 };

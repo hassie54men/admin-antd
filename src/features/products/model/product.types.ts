@@ -5,3 +5,10 @@ export interface Product {
   price: number;
   rating: number;
 }
+
+export interface ProductsListResponse {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
+}
