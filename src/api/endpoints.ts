@@ -5,5 +5,6 @@ export const ENDPOINTS = {
   },
   products: {
     list: "/products",
+    single: (id: number) => `/products/${id}`,
   },
 };
