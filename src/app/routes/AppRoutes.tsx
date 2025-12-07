@@ -8,6 +8,7 @@ import Admin from "../../pages/admin-page/Admin.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import { ROUTES } from "../../shared/constants/routes.ts";
 import ProductsListPage from "../../features/products/pages/ProductsListPage.tsx";
+import ProductSingleListPage from "../../features/products/pages/ProductSingleListPage.tsx";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const AppRoutes = () => {
 
           <Route element={<AdminLayout />}>
             <Route path={ROUTES.products} element={<ProductsListPage />} />
+            <Route path={ROUTES.product} element={<ProductSingleListPage />} />
           </Route>
         </Route>
         <Route path={ROUTES.notFound} element={<div>NotFound</div>} />

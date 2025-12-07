@@ -17,7 +17,15 @@
     "category": "Category",
     "price": "Price",
     "rating": "Rating",
-    "error": "Error loading products"
+    "error": "Error loading products",
+    "productCard": "Product card",
+    "backButton": "Back"
+  },
+  "menu": {
+    "admin": "Admin",
+    "products": "Products",
+    "users": "Users",
+    "posts": "Posts"
   },
 
   "changeLang": "change language"

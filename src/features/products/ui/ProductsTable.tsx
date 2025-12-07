@@ -2,10 +2,12 @@ import { Table, Typography } from "antd";
 import { useGetProductsQuery } from "../model/product.queries.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 
 const ProductsTable = () => {
   const { t } = useTranslation();
   const { data, isLoading, isError } = useGetProductsQuery();
+  const navigate = useNavigate();
 
   if (isError) {
     return <div>{t("table.error")}</div>;
@@ -16,7 +18,9 @@ const ProductsTable = () => {
       title: t("table.id"),
       dataIndex: "id",
       key: "id",
-      render: (text: number) => <a>{text}</a>,
+      render: (text: number, record: Product) => (
+        <a onClick={() => navigate(`/products/${record.id}`)}>{text}</a>
+      ),
     },
     {
       title: t("table.title"),
