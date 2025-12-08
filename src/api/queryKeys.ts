@@ -7,5 +7,6 @@ export const QUERY_KEYS = {
     all: ["products"] as const,
     list: () => [...QUERY_KEYS.products.all, "list"],
     single: (id: number) => [...QUERY_KEYS.products.all, "single", id],
+    search: (query: string) => [...QUERY_KEYS.products.all, "search", query],
   },
 } as const;
