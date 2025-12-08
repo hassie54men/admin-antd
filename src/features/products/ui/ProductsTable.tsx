@@ -1,12 +1,17 @@
-import { Table, Typography } from "antd";
-import { useGetProductsQuery } from "../model/product.queries.ts";
+import { Button, Input, Table, Typography } from "antd";
+import { useGetSearchProduct } from "../model/product.queries.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
+import { useState } from "react";
+import { useDeleteProduct } from "../model/products.mutations.ts";
 
 const ProductsTable = () => {
+  const [value, setValue] = useState("");
+  const { data, isLoading, isError } = useGetSearchProduct(value);
+  const { mutate: deleteProductMutate, isPending: deletePending } =
+    useDeleteProduct();
   const { t } = useTranslation();
-  const { data, isLoading, isError } = useGetProductsQuery();
   const navigate = useNavigate();
 
   if (isError) {
@@ -47,14 +52,33 @@ const ProductsTable = () => {
       key: "rating",
       sorter: (a: Product, b: Product) => a.rating - b.rating,
     },
+    {
+      title: t("text.delete"),
+      key: "delete",
+      render: (_: unknown, record: Product) => (
+        <Button
+          loading={deletePending}
+          onClick={() => deleteProductMutate(record.id)}
+        >
+          {t("text.delete")}
+        </Button>
+      ),
+    },
   ];
 
   return (
-    <Table<Product>
-      dataSource={data?.products}
-      columns={colums}
-      loading={isLoading}
-    />
+    <>
+      <Input.Search
+        value={value}
+        loading={isLoading}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <Table<Product>
+        dataSource={data?.products}
+        columns={colums}
+        loading={isLoading}
+      />
+    </>
   );
 };
 
