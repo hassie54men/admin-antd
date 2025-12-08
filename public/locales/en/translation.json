@@ -9,7 +9,8 @@
     "admin": "Admin",
     "lang.en": "English",
     "personalInformation": "Personal information",
-    "security": "Security"
+    "security": "Security",
+    "delete": "Delete"
   },
   "table": {
     "id": "ID",
