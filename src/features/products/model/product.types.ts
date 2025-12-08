@@ -12,3 +12,10 @@ export interface ProductsListResponse {
   skip: number;
   limit: number;
 }
+
+export interface ProductSearchResponse {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
+}
