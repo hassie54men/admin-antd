@@ -1,28 +1,26 @@
-import { Input, Table, Typography } from "antd";
+import { Table, Typography } from "antd";
 import { useGetSearchProduct } from "../model/product.queries.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
-import { useState } from "react";
+import { TableLink } from "../../../shared/ui/TableLink.tsx";
+import { Search } from "../../../shared/ui/Search.tsx";
+import { useSearchQuery } from "../../../shared/hooks/useSearchQuery.ts";
 
 const ProductsTable = () => {
-  const [value, setValue] = useState("");
-  const { data, isLoading, isError } = useGetSearchProduct(value);
+  const { q } = useSearchQuery();
+  const { data, isLoading, isError } = useGetSearchProduct(q);
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   if (isError) {
     return <div>{t("products.error")}</div>;
   }
 
-  const colums = [
+  const columns = [
     {
       title: t("products.id"),
       dataIndex: "id",
       key: "id",
-      render: (text: number, record: Product) => (
-        <a onClick={() => navigate(`/products/${record.id}`)}>{text}</a>
-      ),
+      render: (_: unknown, record: Product) => <TableLink id={record.id} />,
     },
     {
       title: t("products.title"),
@@ -41,26 +39,22 @@ const ProductsTable = () => {
       title: t("products.price"),
       dataIndex: "price",
       key: "price",
-      sorter: (a: Product, b: Product) => a.price - b.price,
+      sorter: true,
     },
     {
       title: t("products.rating"),
       dataIndex: "rating",
       key: "rating",
-      sorter: (a: Product, b: Product) => a.rating - b.rating,
+      sorter: true,
     },
   ];
 
   return (
     <>
-      <Input.Search
-        value={value}
-        loading={isLoading}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <Search />
       <Table<Product>
         dataSource={data?.products}
-        columns={colums}
+        columns={columns}
         loading={isLoading}
       />
     </>
