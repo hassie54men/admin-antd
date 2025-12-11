@@ -10,12 +10,12 @@ const ProductsTable = () => {
   const navigate = useNavigate();
 
   if (isError) {
-    return <div>{t("table.error")}</div>;
+    return <div>{t("products.error")}</div>;
   }
 
   const colums = [
     {
-      title: t("table.id"),
+      title: t("products.id"),
       dataIndex: "id",
       key: "id",
       render: (text: number, record: Product) => (
@@ -23,7 +23,7 @@ const ProductsTable = () => {
       ),
     },
     {
-      title: t("table.title"),
+      title: t("products.title"),
       dataIndex: "title",
       key: "title",
       render: (text: string) => (
@@ -31,18 +31,18 @@ const ProductsTable = () => {
       ),
     },
     {
-      title: t("table.category"),
+      title: t("products.category"),
       dataIndex: "category",
       key: "category",
     },
     {
-      title: t("table.price"),
+      title: t("products.price"),
       dataIndex: "price",
       key: "price",
       sorter: (a: Product, b: Product) => a.price - b.price,
     },
     {
-      title: t("table.rating"),
+      title: t("products.rating"),
       dataIndex: "rating",
       key: "rating",
       sorter: (a: Product, b: Product) => a.rating - b.rating,
