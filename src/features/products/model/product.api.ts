@@ -18,7 +18,7 @@ export const getSingleProduct = async (id: number): Promise<Product> => {
   return res.data;
 };
 
-export const getSearchProduct = async (
+export const searchProduct = async (
   query: string,
 ): Promise<ProductSearchResponse> => {
   const res = await apiClient.get<ProductSearchResponse>(
@@ -30,7 +30,7 @@ export const getSearchProduct = async (
   return res.data;
 };
 
-export const getDeleteProduct = async (id: number): Promise<Product> => {
+export const deleteProduct = async (id: number): Promise<Product> => {
   const res = await apiClient.delete<Product>(ENDPOINTS.products.single(id));
   return res.data;
 };

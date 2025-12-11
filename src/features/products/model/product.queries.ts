@@ -1,9 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  getProducts,
-  getSearchProduct,
-  getSingleProduct,
-} from "./product.api.ts";
+import { getProducts, searchProduct, getSingleProduct } from "./product.api.ts";
 import type { Product, ProductsListResponse } from "./product.types.ts";
 import { QUERY_KEYS } from "../../../api/queryKeys.ts";
 
@@ -24,6 +20,6 @@ export function useGetSingleProduct(id: number) {
 export function useGetSearchProduct(query: string) {
   return useQuery({
     queryKey: [QUERY_KEYS.products.search(query)],
-    queryFn: () => getSearchProduct(query),
+    queryFn: () => searchProduct(query),
   });
 }
