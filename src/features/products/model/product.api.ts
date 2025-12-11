@@ -34,3 +34,20 @@ export const deleteProduct = async (id: number): Promise<Product> => {
   const res = await apiClient.delete<Product>(ENDPOINTS.products.single(id));
   return res.data;
 };
+
+export const addProduct = async ({
+  title,
+  price,
+  rating,
+  category,
+  id,
+}: Product) => {
+  const res = await apiClient.post<Product>("/products/add", {
+    title,
+    price,
+    rating,
+    category,
+    id,
+  });
+  return res.data;
+};
