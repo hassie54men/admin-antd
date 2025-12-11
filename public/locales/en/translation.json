@@ -12,7 +12,7 @@
     "security": "Security",
     "delete": "Delete"
   },
-  "table": {
+  "products": {
     "id": "ID",
     "title": "Title",
     "category": "Category",

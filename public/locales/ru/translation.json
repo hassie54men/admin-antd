@@ -12,7 +12,7 @@
     "security": "Безопасность",
     "delete": "Удалить"
   },
-  "table": {
+  "products": {
     "id": "ID",
     "title": "Название",
     "category": "Категория",

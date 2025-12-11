@@ -1,11 +1,15 @@
 import { useGetSingleProduct } from "../model/product.queries.ts";
-import { useNavigate, useParams } from "react-router";
-import { Button, Card } from "antd";
+import { useParams } from "react-router";
+import { Card } from "antd";
 import { useTranslation } from "react-i18next";
-import { ROUTES } from "../../../shared/constants/routes.ts";
+import BackButton from "../../../shared/ui/BackButton.tsx";
+const styles = {
+  PRODUCT_CARD_WIDTH: {
+    width: "300px",
+  },
+};
 
 const ProductCard = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const { id } = useParams();
   const productId = Number(id);
@@ -18,29 +22,27 @@ const ProductCard = () => {
   return (
     <>
       <Card
-        title={t("table.productCard")}
-        style={{ width: 300 }}
+        title={t("products.productCard")}
+        style={styles.PRODUCT_CARD_WIDTH}
         loading={isLoading}
       >
         <p>
-          {t("table.id")}: {data?.id}
+          {t("products.id")}: {data?.id}
         </p>
         <p>
-          {t("table.title")}: {data?.title}
+          {t("products.title")}: {data?.title}
         </p>
         <p>
-          {t("table.category")}: {data?.category}
+          {t("products.category")}: {data?.category}
         </p>
         <p>
-          {t("table.price")}: {data?.price}
+          {t("products.price")}: {data?.price}
         </p>
         <p>
-          {t("table.rating")}: {data?.rating}
+          {t("products.rating")}: {data?.rating}
         </p>
       </Card>
-      <Button onClick={() => navigate(ROUTES.products)}>
-        {t("table.backButton")}
-      </Button>
+      <BackButton />
     </>
   );
 };
