@@ -3,4 +3,8 @@ export const QUERY_KEYS = {
     all: ["auth"] as const,
     me: () => [...QUERY_KEYS.auth.all, "me"],
   },
+  products: {
+    all: ["products"] as const,
+    list: () => [...QUERY_KEYS.products.all, "list"],
+  },
 } as const;

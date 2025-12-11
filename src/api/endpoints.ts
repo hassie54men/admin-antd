@@ -3,4 +3,7 @@ export const ENDPOINTS = {
     login: "/auth/login",
     me: "/auth/me",
   },
+  products: {
+    list: "/products",
+  },
 };

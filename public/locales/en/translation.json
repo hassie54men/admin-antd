@@ -11,6 +11,14 @@
     "personalInformation": "Personal information",
     "security": "Security"
   },
+  "table": {
+    "id": "ID",
+    "title": "Title",
+    "category": "Category",
+    "price": "Price",
+    "rating": "Rating",
+    "error": "Error loading products"
+  },
 
   "changeLang": "change language"
 }
