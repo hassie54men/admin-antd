@@ -1,12 +1,14 @@
-import { Table, Typography } from "antd";
-import { useGetProductsQuery } from "../model/product.queries.ts";
+import { Input, Table, Typography } from "antd";
+import { useGetSearchProduct } from "../model/product.queries.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const ProductsTable = () => {
+  const [value, setValue] = useState("");
+  const { data, isLoading, isError } = useGetSearchProduct(value);
   const { t } = useTranslation();
-  const { data, isLoading, isError } = useGetProductsQuery();
   const navigate = useNavigate();
 
   if (isError) {
@@ -50,11 +52,18 @@ const ProductsTable = () => {
   ];
 
   return (
-    <Table<Product>
-      dataSource={data?.products}
-      columns={colums}
-      loading={isLoading}
-    />
+    <>
+      <Input.Search
+        value={value}
+        loading={isLoading}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <Table<Product>
+        dataSource={data?.products}
+        columns={colums}
+        loading={isLoading}
+      />
+    </>
   );
 };
 

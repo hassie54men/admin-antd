@@ -1,8 +1,10 @@
 import { useGetSingleProduct } from "../model/product.queries.ts";
 import { useParams } from "react-router";
-import { Card } from "antd";
+import { Button, Card } from "antd";
 import { useTranslation } from "react-i18next";
 import BackButton from "../../../shared/ui/BackButton.tsx";
+import { useDeleteProduct } from "../model/products.mutations.ts";
+
 const styles = {
   PRODUCT_CARD_WIDTH: {
     width: "300px",
@@ -14,6 +16,8 @@ const ProductCard = () => {
   const { id } = useParams();
   const productId = Number(id);
   const { data, isLoading, isError } = useGetSingleProduct(productId);
+  const { mutate: deleteProductMutate, isPending: deletePending } =
+    useDeleteProduct();
 
   if (!data && isError) {
     return <div>PRODUCT LOADING ERROR</div>;
@@ -43,6 +47,12 @@ const ProductCard = () => {
         </p>
       </Card>
       <BackButton />
+      <Button
+        loading={deletePending}
+        onClick={() => deleteProductMutate(productId)}
+      >
+        {t("text.delete")}
+      </Button>
     </>
   );
 };

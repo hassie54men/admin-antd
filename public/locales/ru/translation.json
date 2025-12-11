@@ -9,7 +9,8 @@
     "admin": "Админ",
     "lang.ru": "Русский",
     "personalInformation": "Личные данные",
-    "security": "Безопасность"
+    "security": "Безопасность",
+    "delete": "Удалить"
   },
   "products": {
     "id": "ID",
