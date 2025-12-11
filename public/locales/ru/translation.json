@@ -11,13 +11,21 @@
     "personalInformation": "Личные данные",
     "security": "Безопасность"
   },
-  "table": {
+  "products": {
     "id": "ID",
     "title": "Название",
     "category": "Категория",
     "price": "Цена",
     "rating": "Рейтинг",
-    "error": "Ошибка при загрузке продуктов"
+    "error": "Ошибка при загрузке продуктов",
+    "productCard": "Карточка товара",
+    "backButton": "Назад"
+  },
+  "menu": {
+    "admin": "Админка",
+    "products": "Товары",
+    "users": "Пользователи",
+    "posts": "Посты"
   },
 
   "changeLang": "сменить язык"

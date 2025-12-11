@@ -6,5 +6,6 @@ export const QUERY_KEYS = {
   products: {
     all: ["products"] as const,
     list: () => [...QUERY_KEYS.products.all, "list"],
+    single: (id: number) => [...QUERY_KEYS.products.all, "single", id],
   },
 } as const;
