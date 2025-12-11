@@ -4,5 +4,6 @@ export const ROUTES = {
   admin: "/admin",
   products: "/products",
   product: "/products/:id",
+  addProduct: "/products/add",
   notFound: "*",
 };
