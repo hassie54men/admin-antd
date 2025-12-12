@@ -4,6 +4,7 @@ import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import AddProductButton from "./AddProductButton.tsx";
 
 const ProductsTable = () => {
   const [value, setValue] = useState("");
@@ -53,6 +54,7 @@ const ProductsTable = () => {
 
   return (
     <>
+      <AddProductButton />
       <Input.Search
         value={value}
         loading={isLoading}

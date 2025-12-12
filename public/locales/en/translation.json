@@ -20,7 +20,8 @@
     "rating": "Rating",
     "error": "Error loading products",
     "productCard": "Product card",
-    "backButton": "Back"
+    "backButton": "Back",
+    "add": "Add product"
   },
   "menu": {
     "admin": "Admin",
