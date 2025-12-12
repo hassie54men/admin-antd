@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "antd";
+import { Breadcrumb, Button, Card, Flex, Form, Input, Typography } from "antd";
 import { useAddProduct } from "../model/products.mutations.ts";
 import type { Product } from "../model/product.types.ts";
 import BackButton from "../../../shared/ui/BackButton.tsx";
@@ -19,59 +19,82 @@ const AddProduct = () => {
   };
   return (
     <>
-      <Form onFinish={onFinish}>
-        <Form.Item<FieldType>
-          label={t("products.id")}
-          name="id"
-          rules={[{ required: true, message: "Please input your username!" }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item<FieldType>
-          label={t("products.title")}
-          name="title"
-          rules={[{ required: true, message: "Please input your username!" }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item<FieldType>
-          label={t("products.price")}
-          name="price"
-          rules={[{ required: true, message: "Please input your username!" }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item<FieldType>
-          label={t("products.rating")}
-          name="rating"
-          rules={[{ required: true, message: "Please input your username!" }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item<FieldType>
-          label={t("products.category")}
-          name="category"
-          rules={[{ required: true, message: "Please input your username!" }]}
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item wrapperCol={{ span: 24 }}>
-          <Button htmlType="submit" loading={isPending}>
-            {t("products.add")}
-          </Button>
+      <Flex vertical gap={8} style={{ marginBottom: 16 }}>
+        <Breadcrumb>
+          <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
+          <Breadcrumb.Item>{t("products.product")}</Breadcrumb.Item>
+          <Breadcrumb.Item>{t("products.create")}</Breadcrumb.Item>
+        </Breadcrumb>
+        <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
+          {t("products.product")}
+        </Typography>
+
+        <Flex justify="space-between" align="center">
           <BackButton />
-        </Form.Item>
-      </Form>
+        </Flex>
+      </Flex>
+
+      <Card style={{ maxWidth: 1200 }}>
+        <Form
+          layout="vertical"
+          onFinish={onFinish}
+          style={{ maxWidth: "100%" }}
+        >
+          <Flex gap={16} wrap>
+            <Form.Item<FieldType>
+              label={t("products.id")}
+              name="id"
+              required
+              style={{ flex: 1, minWidth: 220 }}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item<FieldType>
+              label={t("products.price")}
+              name="price"
+              required
+              style={{ flex: 1, minWidth: 220 }}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item<FieldType>
+              label={t("products.title")}
+              name="title"
+              required
+              style={{ flex: 1, minWidth: 220 }}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item<FieldType>
+              label={t("products.rating")}
+              name="rating"
+              required
+              style={{ flex: 1, minWidth: 220 }}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item<FieldType>
+              label={t("products.category")}
+              name="category"
+              required
+              style={{ flex: 1, minWidth: 220, maxWidth: 220 }}
+            >
+              <Input />
+            </Form.Item>
+          </Flex>
+
+          {/* футер формы с кнопкой справа, как на скрине */}
+          <Form.Item style={{ marginTop: 32, textAlign: "right" }}>
+            <Button type="primary" htmlType="submit" loading={isPending}>
+              {t("products.save")}
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
     </>
   );
 };

@@ -9,9 +9,15 @@ const { Sider, Content } = Layout;
 const AdminLayout = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+
   const styles = {
-    content: { margin: "24px 16px", padding: 24, minHeight: 280 },
-    layout: { height: "100vh" },
+    layout: { height: "100vh" }, // весь layout на высоту окна
+    innerLayout: { height: "100%" }, // правая часть заполняет высоту
+    content: {
+      padding: 24,
+      overflow: "auto", // скролл только в контенте
+      background: "#f5f5f5",
+    },
   };
 
   return (
@@ -21,7 +27,7 @@ const AdminLayout = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={["2"]}
           items={[
             {
               key: "1",
@@ -46,7 +52,8 @@ const AdminLayout = () => {
           ]}
         />
       </Sider>
-      <Layout>
+
+      <Layout style={styles.innerLayout}>
         <AdminHeader />
         <Content style={styles.content}>
           <Outlet />

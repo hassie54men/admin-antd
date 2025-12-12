@@ -21,7 +21,12 @@
     "error": "Error loading products",
     "productCard": "Product card",
     "backButton": "Back",
-    "add": "Add product"
+    "add": "Add product",
+    "product": "Product",
+    "products": "Products",
+    "search": "Search",
+    "create": "Create",
+    "save": "Save"
   },
   "menu": {
     "admin": "Admin",

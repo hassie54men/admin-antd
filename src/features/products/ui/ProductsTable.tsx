@@ -1,4 +1,4 @@
-import { Input, Table, Typography } from "antd";
+import { Breadcrumb, Flex, Input, Table, Typography } from "antd";
 import { useGetSearchProduct } from "../model/product.queries.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
@@ -54,16 +54,44 @@ const ProductsTable = () => {
 
   return (
     <>
-      <AddProductButton />
-      <Input.Search
-        value={value}
-        loading={isLoading}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <Flex
+        vertical
+        style={{
+          marginBottom: 16,
+          gap: 8,
+        }}
+      >
+        <Breadcrumb>
+          <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
+          <Breadcrumb.Item></Breadcrumb.Item>
+        </Breadcrumb>
+        <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
+          {t("products.product")}
+        </Typography>
+        <Flex
+          justify={"space-between"}
+          align={"center"}
+          style={{
+            marginBottom: 16,
+          }}
+        >
+          <Input.Search
+            style={{ maxWidth: 320 }} // чтобы не растягивался
+            value={value}
+            loading={isLoading}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder={t("products.search")}
+          />
+
+          <AddProductButton />
+        </Flex>
+      </Flex>
+
       <Table<Product>
         dataSource={data?.products}
         columns={colums}
         loading={isLoading}
+        rowKey="id"
       />
     </>
   );
