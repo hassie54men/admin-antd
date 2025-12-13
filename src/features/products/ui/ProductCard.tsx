@@ -2,8 +2,8 @@ import { useGetSingleProduct } from "../model/product.queries.ts";
 import { useParams } from "react-router";
 import { Breadcrumb, Button, Card, Flex, Form, Input, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import BackButton from "../../../shared/ui/BackButton.tsx";
 import { useDeleteProduct } from "../model/products.mutations.ts";
+import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
 
 const ProductCard = () => {
   const { t } = useTranslation();
@@ -19,27 +19,31 @@ const ProductCard = () => {
 
   return (
     <>
-      <Flex vertical gap={8} style={{ marginBottom: 16 }}>
-        <Breadcrumb>
-          <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
-          <Breadcrumb.Item>{t("products.product")}</Breadcrumb.Item>
-        </Breadcrumb>
-        <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
-          {t("products.product")}
-        </Typography>
-
-        <Flex justify="space-between" align="center">
-          <BackButton />
-
-          <Button
-            danger
-            type="primary"
-            loading={deletePending}
-            onClick={() => deleteProductMutate(productId)}
-          >
-            {t("text.delete")}
-          </Button>
+      <Breadcrumb>
+        <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
+        <Breadcrumb.Item>{t("products.product")}</Breadcrumb.Item>
+      </Breadcrumb>
+      <Flex
+        align={"center"}
+        justify={"space-between"}
+        gap={8}
+        style={{ marginBottom: 16 }}
+      >
+        <Flex align={"center"} gap={8}>
+          <BackArrowButton />
+          <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
+            {t("products.product")}
+          </Typography>
         </Flex>
+
+        <Button
+          danger
+          type="primary"
+          loading={deletePending}
+          onClick={() => deleteProductMutate(productId)}
+        >
+          {t("text.delete")}
+        </Button>
       </Flex>
 
       {/* поля продукта, как форма просмотра */}

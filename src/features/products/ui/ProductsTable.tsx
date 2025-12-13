@@ -54,6 +54,10 @@ const ProductsTable = () => {
 
   return (
     <>
+      <Breadcrumb>
+        <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
+      </Breadcrumb>
       <Flex
         vertical
         style={{
@@ -61,10 +65,6 @@ const ProductsTable = () => {
           gap: 8,
         }}
       >
-        <Breadcrumb>
-          <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
-          <Breadcrumb.Item></Breadcrumb.Item>
-        </Breadcrumb>
         <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
           {t("products.product")}
         </Typography>
@@ -76,7 +76,7 @@ const ProductsTable = () => {
           }}
         >
           <Input.Search
-            style={{ maxWidth: 320 }} // чтобы не растягивался
+            style={{ maxWidth: 320 }}
             value={value}
             loading={isLoading}
             onChange={(e) => setValue(e.target.value)}
