@@ -1,44 +1,18 @@
 import { useGetSingleProduct } from "../model/product.queries.ts";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Breadcrumb, Button, Card, Flex, Form, Input, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import {
-  useDeleteProduct,
-  useUpdateProduct,
-} from "../model/products.mutations.ts";
+import { useDeleteProduct } from "../model/products.mutations.ts";
 import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
-import type { Product } from "../model/product.types.ts";
-import { useEffect, useState } from "react";
 
 const ProductCard = () => {
   const { t } = useTranslation();
   const { id } = useParams();
-  const [form] = Form.useForm<Product>();
+  const navigate = useNavigate();
   const productId = Number(id);
   const { data, isLoading, isError } = useGetSingleProduct(productId);
   const { mutate: deleteProductMutate, isPending: deletePending } =
     useDeleteProduct();
-  const { mutate: updateProduct, isPending: updatePending } =
-    useUpdateProduct();
-  const [isEdit, setIsEdit] = useState(false);
-
-  useEffect(() => {
-    if (data) {
-      form.setFieldsValue(data);
-    }
-  }, [data, form]);
-
-  function handleFinish(values: Product) {
-    updateProduct(
-      {
-        ...values,
-        id: productId,
-      },
-      {
-        onSuccess: () => setIsEdit(false),
-      },
-    );
-  }
 
   if (!data && isError) {
     return <div>PRODUCT LOADING ERROR</div>;
@@ -65,11 +39,10 @@ const ProductCard = () => {
 
         <Flex gap={10}>
           <Button
-            type={"primary"}
-            loading={updatePending}
-            onClick={() => setIsEdit((prev) => !prev)}
+            type="primary"
+            onClick={() => navigate(`/products/${productId}/edit`)}
           >
-            {isEdit ? t("products.cancelEdit") : t("products.edit")}
+            {t("products.edit")}
           </Button>
           <Button
             danger
@@ -83,57 +56,39 @@ const ProductCard = () => {
       </Flex>
 
       <Card loading={isLoading}>
-        <Form
-          layout="vertical"
-          onFinish={handleFinish}
-          disabled={!isEdit}
-          form={form}
-        >
+        <Form layout="vertical">
           <Flex gap={16} wrap>
             <Form.Item
-              name="id"
               label={t("products.id")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input />
+              <Input value={data?.id} disabled />
             </Form.Item>
             <Form.Item
-              name="title"
               label={t("products.title")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input />
+              <Input value={data?.title} disabled />
             </Form.Item>
             <Form.Item
-              name="category"
               label={t("products.category")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input />
+              <Input value={data?.category} disabled />
             </Form.Item>
             <Form.Item
-              name="price"
               label={t("products.price")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input />
+              <Input value={data?.price} disabled />
             </Form.Item>
             <Form.Item
-              name="rating"
               label={t("products.rating")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input />
+              <Input value={data?.rating} disabled />
             </Form.Item>
           </Flex>
-
-          {isEdit && (
-            <Form.Item style={{ marginTop: 24, textAlign: "right" }}>
-              <Button type="primary" htmlType="submit" loading={updatePending}>
-                {t("products.save")}
-              </Button>
-            </Form.Item>
-          )}
         </Form>
       </Card>
     </>
