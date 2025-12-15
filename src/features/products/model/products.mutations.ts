@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { addProduct, deleteProduct } from "./product.api.ts";
+import { addProduct, deleteProduct, updateProduct } from "./product.api.ts";
 import type { Product } from "./product.types.ts";
 
 export function useDeleteProduct() {
@@ -10,5 +10,11 @@ export function useDeleteProduct() {
 export function useAddProduct() {
   return useMutation({
     mutationFn: (product: Product) => addProduct(product),
+  });
+}
+
+export function useUpdateProduct() {
+  return useMutation({
+    mutationFn: (product: Product) => updateProduct(product),
   });
 }
