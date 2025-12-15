@@ -7,5 +7,6 @@ export const ENDPOINTS = {
     list: "/products",
     single: (id: number) => `/products/${id}`,
     search: "/products/search",
+    add: "/products/add",
   },
 };
