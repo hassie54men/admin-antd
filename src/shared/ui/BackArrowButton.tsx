@@ -1,8 +1,8 @@
-import { Button } from "antd";
+import { Button, type ButtonProps } from "antd";
 import { useNavigate } from "react-router";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
-const BackArrowButton = () => {
+const BackArrowButton = (props: ButtonProps) => {
   const navigate = useNavigate();
 
   return (
@@ -15,6 +15,7 @@ const BackArrowButton = () => {
         width: 32,
         height: 32,
       }}
+      {...props}
     />
   );
 };
