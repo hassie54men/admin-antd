@@ -10,6 +10,7 @@ import { ROUTES } from "../../shared/constants/routes.ts";
 import ProductsListPage from "../../features/products/pages/ProductsListPage.tsx";
 import ProductSingleListPage from "../../features/products/pages/ProductSingleListPage.tsx";
 import ProductAddInPage from "../../features/products/pages/ProductAddInPage.tsx";
+import ProductsEditPage from "../../features/products/pages/ProductsEditPage.tsx";
 
 const AppRoutes = () => {
   return (
@@ -28,6 +29,7 @@ const AppRoutes = () => {
             <Route path={ROUTES.products} element={<ProductsListPage />} />
             <Route path={ROUTES.product} element={<ProductSingleListPage />} />
             <Route path={ROUTES.addProduct} element={<ProductAddInPage />} />
+            <Route path={ROUTES.edit} element={<ProductsEditPage />} />
           </Route>
         </Route>
         <Route path={ROUTES.notFound} element={<div>NotFound</div>} />

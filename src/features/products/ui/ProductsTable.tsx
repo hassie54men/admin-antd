@@ -1,14 +1,15 @@
-import { Input, Table, Typography } from "antd";
+import { Breadcrumb, Flex, Table, Typography } from "antd";
 import { useGetSearchProduct } from "../model/product.queries.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { useState } from "react";
 import AddProductButton from "./AddProductButton.tsx";
+import Search from "../../../shared/ui/Search.tsx";
+import { useSearchQuery } from "../../../shared/hooks/useSearchQuery.ts";
 
 const ProductsTable = () => {
-  const [value, setValue] = useState("");
-  const { data, isLoading, isError } = useGetSearchProduct(value);
+  const { q } = useSearchQuery();
+  const { data, isLoading, isError } = useGetSearchProduct(q);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -54,16 +55,38 @@ const ProductsTable = () => {
 
   return (
     <>
-      <AddProductButton />
-      <Input.Search
-        value={value}
-        loading={isLoading}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <Breadcrumb>
+        <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
+      </Breadcrumb>
+      <Flex
+        vertical
+        style={{
+          marginBottom: 16,
+          gap: 8,
+        }}
+      >
+        <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
+          {t("products.product")}
+        </Typography>
+        <Flex
+          justify={"space-between"}
+          align={"center"}
+          style={{
+            marginBottom: 16,
+          }}
+        >
+          <Search />
+
+          <AddProductButton />
+        </Flex>
+      </Flex>
+
       <Table<Product>
         dataSource={data?.products}
         columns={colums}
         loading={isLoading}
+        rowKey="id"
       />
     </>
   );

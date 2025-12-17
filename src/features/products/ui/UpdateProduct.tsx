@@ -1,18 +1,37 @@
-import { useGetSingleProduct } from "../model/product.queries.ts";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router";
 import { Breadcrumb, Button, Card, Flex, Form, Input, Typography } from "antd";
-import { useTranslation } from "react-i18next";
-import { useDeleteProduct } from "../model/products.mutations.ts";
+import type { Product } from "../model/product.types.ts";
+import { useGetSingleProduct } from "../model/product.queries.ts";
+import { useUpdateProduct } from "../model/products.mutations.ts";
 import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
+import { ROUTES } from "../../../shared/constants/routes.ts";
+import { useEffect } from "react";
 
-const ProductCard = () => {
+const UpdateProduct = () => {
   const { t } = useTranslation();
   const { id } = useParams();
+  const [form] = Form.useForm<Product>();
   const navigate = useNavigate();
   const productId = Number(id);
   const { data, isLoading, isError } = useGetSingleProduct(productId);
-  const { mutate: deleteProductMutate, isPending: deletePending } =
-    useDeleteProduct();
+  const { mutate: updateProduct, isPending } = useUpdateProduct();
+
+  useEffect(() => {
+    if (data) {
+      form.setFieldsValue(data);
+    }
+  }, [data, form]);
+
+  const handleFinish = async (values: Product) => {
+    updateProduct(
+      { ...values, id: productId },
+      {
+        onSuccess: () =>
+          navigate(ROUTES.product.replace(":id", String(productId))),
+      },
+    );
+  };
 
   if (!data && isError) {
     return <div>PRODUCT LOADING ERROR</div>;
@@ -23,6 +42,7 @@ const ProductCard = () => {
       <Breadcrumb>
         <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
         <Breadcrumb.Item>{t("products.product")}</Breadcrumb.Item>
+        <Breadcrumb.Item>{t("products.edit")}</Breadcrumb.Item>
       </Breadcrumb>
       <Flex
         align={"center"}
@@ -36,27 +56,10 @@ const ProductCard = () => {
             {t("products.product")}
           </Typography>
         </Flex>
-
-        <Flex gap={10}>
-          <Button
-            type="primary"
-            onClick={() => navigate(`/products/${productId}/edit`)}
-          >
-            {t("products.edit")}
-          </Button>
-          <Button
-            danger
-            type="primary"
-            loading={deletePending}
-            onClick={() => deleteProductMutate(productId)}
-          >
-            {t("text.delete")}
-          </Button>
-        </Flex>
       </Flex>
 
       <Card loading={isLoading}>
-        <Form layout="vertical">
+        <Form layout="vertical" onFinish={handleFinish} form={form}>
           <Flex gap={16} wrap>
             <Form.Item
               label={t("products.id")}
@@ -65,34 +68,54 @@ const ProductCard = () => {
               <Input value={data?.id} disabled />
             </Form.Item>
             <Form.Item
+              name="title"
               label={t("products.title")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input value={data?.title} disabled />
+              <Input />
             </Form.Item>
             <Form.Item
+              name="category"
               label={t("products.category")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input value={data?.category} disabled />
+              <Input />
             </Form.Item>
             <Form.Item
+              name="price"
               label={t("products.price")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input value={data?.price} disabled />
+              <Input />
             </Form.Item>
             <Form.Item
+              name="rating"
               label={t("products.rating")}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input value={data?.rating} disabled />
+              <Input />
             </Form.Item>
           </Flex>
+          <Form.Item>
+            <Flex gap={10} justify={"flex-end"}>
+              <Button type={"primary"} loading={isPending} htmlType={"submit"}>
+                {t("products.save")}
+              </Button>
+              <Button
+                danger
+                type={"primary"}
+                onClick={() =>
+                  navigate(ROUTES.product.replace(":id", String(productId)))
+                }
+              >
+                {t("products.cancelEdit")}
+              </Button>
+            </Flex>
+          </Form.Item>
         </Form>
       </Card>
     </>
   );
 };
 
-export default ProductCard;
+export default UpdateProduct;

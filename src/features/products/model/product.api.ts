@@ -42,12 +42,29 @@ export const addProduct = async ({
   category,
   id,
 }: Product) => {
-  const res = await apiClient.post<Product>("/products/add", {
+  const res = await apiClient.post<Product>(ENDPOINTS.products.add, {
     title,
     price,
     rating,
     category,
     id,
   });
+  return res.data;
+};
+
+export const updateProduct = async ({
+  title,
+  price,
+  rating,
+  category,
+  id,
+}: Product) => {
+  const res = await apiClient.put<Product>(ENDPOINTS.products.single(id), {
+    title,
+    price,
+    rating,
+    category,
+  });
+
   return res.data;
 };
