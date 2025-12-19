@@ -10,7 +10,7 @@ const ProductCard = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
-  const productId = Number(id);
+  const productId = id ?? "";
   const { data, isLoading, isError } = useGetSingleProduct(productId);
   const { mutate: deleteProductMutate, isPending: deletePending } =
     useDeleteProduct();

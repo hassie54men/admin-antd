@@ -1,4 +1,5 @@
 import {
+  App,
   Breadcrumb,
   Button,
   Card,
@@ -6,12 +7,11 @@ import {
   Flex,
   Form,
   Input,
-  notification,
   Row,
   Typography,
 } from "antd";
-import { useAddProduct } from "../model/products.mutations.ts";
-import type { Product } from "../model/product.types.ts";
+import { useCreateProduct } from "../model/products.mutations.ts";
+import type { ProductFormData } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
@@ -29,11 +29,17 @@ const AddProduct = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const { mutate: addProductMutate, isPending } = useAddProduct();
-  const onFinish = async (values: Product) => {
-    addProductMutate(values, {
+  const { notification } = App.useApp();
+  const { mutate: createProduct, isPending } = useCreateProduct();
+
+  const onFinish = async (values: ProductFormData) => {
+    createProduct(values, {
       onSuccess: () => {
         form.resetFields();
+        notification.success({
+          message: "Успешно",
+          description: "Сущность успешно создана",
+        });
         navigate(ADMIN_ROUTES.PRODUCTS);
       },
       onError: () => {
@@ -44,6 +50,7 @@ const AddProduct = () => {
       },
     });
   };
+
   return (
     <>
       <Breadcrumb>
