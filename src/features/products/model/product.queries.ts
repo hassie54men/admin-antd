@@ -5,14 +5,14 @@ import { QUERY_KEYS } from "../../../api/queryKeys.ts";
 
 export function useGetSingleProduct(id: string) {
   return useQuery<Product>({
-    queryKey: [QUERY_KEYS.products.single(id)],
+    queryKey: QUERY_KEYS.products.single(id),
     queryFn: () => getSingleProduct(id),
   });
 }
 
 export function useGetSearchProduct(query: string) {
   return useQuery<ProductsListResponse>({
-    queryKey: [QUERY_KEYS.products.search(query)],
+    queryKey: QUERY_KEYS.products.search(query),
     queryFn: () => searchProduct(query),
   });
 }
