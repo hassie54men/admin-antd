@@ -1,21 +1,10 @@
-import {
-  App,
-  Breadcrumb,
-  Button,
-  Card,
-  Col,
-  Flex,
-  Form,
-  Input,
-  Row,
-  Typography,
-} from "antd";
+import { App, Button, Card, Col, Form, Input, Row } from "antd";
 import { useCreateProduct } from "../model/products.mutations.ts";
 import type { ProductFormData } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
-import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
+import AdminPageHeader from "../../../shared/ui/AdminPageHeader.tsx";
 
 type FieldType = {
   id?: number;
@@ -53,17 +42,14 @@ const AddProduct = () => {
 
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
-        <Breadcrumb.Item>{t("products.product")}</Breadcrumb.Item>
-        <Breadcrumb.Item>{t("products.create")}</Breadcrumb.Item>
-      </Breadcrumb>
-      <Flex gap={8} align={"center"} style={{ marginBottom: 16 }}>
-        <BackArrowButton />
-        <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
-          {t("products.product")}
-        </Typography>
-      </Flex>
+      <AdminPageHeader
+        breadcrumbs={[
+          { title: t("products.products") },
+          { title: t("products.product") },
+          { title: t("products.create") },
+        ]}
+        title={t("products.product")}
+      />
 
       <Card>
         <Form

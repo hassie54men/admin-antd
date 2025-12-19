@@ -1,13 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router";
-import { Breadcrumb, Button, Card, Flex, Form, Input, Typography } from "antd";
+import { Button, Card, Flex, Form, Input } from "antd";
 import type {
   ProductFormData,
   ProductRequest,
 } from "../model/product.types.ts";
 import { useGetSingleProduct } from "../model/product.queries.ts";
 import { useEditProduct } from "../model/products.mutations.ts";
-import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
+import AdminPageHeader from "../../../shared/ui/AdminPageHeader.tsx";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 import { useEffect } from "react";
 
@@ -51,24 +51,14 @@ const UpdateProduct = () => {
 
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
-        <Breadcrumb.Item>{t("products.product")}</Breadcrumb.Item>
-        <Breadcrumb.Item>{t("products.edit")}</Breadcrumb.Item>
-      </Breadcrumb>
-      <Flex
-        align={"center"}
-        justify={"space-between"}
-        gap={8}
-        style={{ marginBottom: 16 }}
-      >
-        <Flex align={"center"} gap={8}>
-          <BackArrowButton />
-          <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
-            {t("products.product")}
-          </Typography>
-        </Flex>
-      </Flex>
+      <AdminPageHeader
+        breadcrumbs={[
+          { title: t("products.products") },
+          { title: t("products.product") },
+          { title: t("products.edit") },
+        ]}
+        title={t("products.product")}
+      />
 
       <Card loading={isLoading}>
         <Form layout="vertical" onFinish={handleFinish} form={form}>
