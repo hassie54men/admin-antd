@@ -190,7 +190,7 @@ export function useGetSearchProduct(query: string) {
 
 ### 5.1 Дублирование Page Header
 
-Одинаковый паттерн в `ProductCard.tsx`, `AddProduct.tsx`, `UpdateProduct.tsx`:
+Одинаковый паттерн в `ProductCard.tsx`, `ProductForm.tsx`, `ProductUpdateForm.tsx`:
 
 ```tsx
 // Повторяется везде
@@ -269,7 +269,7 @@ export default PageHeader;
 
 ### 5.2 Дублирование формы продукта
 
-`AddProduct.tsx` и `UpdateProduct.tsx` содержат почти идентичные формы.
+`ProductForm.tsx` и `ProductUpdateForm.tsx` содержат почти идентичные формы.
 
 **Рекомендация:** Создать `ui/ProductForm.tsx`:
 
@@ -374,13 +374,13 @@ export default ProductForm;
 Смешение языков и отсутствие i18n:
 
 ```tsx
-// AddProduct.tsx - на русском, без i18n
+// ProductForm.tsx - на русском, без i18n
 notification.error({
   message: "Ошибка",
   description: "Не удалось добавить товар",
 });
 
-// ProductCard.tsx, UpdateProduct.tsx - на английском, без i18n
+// ProductCard.tsx, ProductUpdateForm.tsx - на английском, без i18n
 return <div>PRODUCT LOADING ERROR</div>;
 ```
 
@@ -444,7 +444,7 @@ const formItemStyle = { flex: 1, minWidth: 200 };
 ### 6.3 Лишний Fragment
 
 ```tsx
-// AddProductButton.tsx
+// ProductCreateButton.tsx
 return (
   <>
     <Button>...</Button>
@@ -476,8 +476,8 @@ return <Button>...</Button>;
 ```tsx
 const ProductsListPage = () => <ProductsTable />;
 const ProductShowPage = () => <ProductCard />;
-const ProductCreatePage = () => <AddProduct />;
-const ProductsEditPage = () => <UpdateProduct />;
+const ProductCreatePage = () => <ProductForm />;
+const ProductsEditPage = () => <ProductUpdateForm />;
 ```
 
 **Варианты решения:**
@@ -493,11 +493,11 @@ const ProductsEditPage = () => <UpdateProduct />;
 |-----------|----------|------|----------|
 | :red_circle: Критично | Двойной массив в queryKey | `product.queries.ts` | Убрать лишние `[]` |
 | :red_circle: Критично | Нет инвалидации кэша | `products.mutations.ts` | Добавить `invalidateQueries` |
-| :orange_circle: Важно | Дублирование PageHeader | `ProductCard`, `AddProduct`, `UpdateProduct` | Создать `PageHeader` компонент |
-| :orange_circle: Важно | Дублирование формы | `AddProduct`, `UpdateProduct` | Создать `ProductForm` компонент |
+| :orange_circle: Важно | Дублирование PageHeader | `ProductCard`, `ProductForm`, `ProductUpdateForm` | Создать `PageHeader` компонент |
+| :orange_circle: Важно | Дублирование формы | `ProductForm`, `ProductUpdateForm` | Создать `ProductForm` компонент |
 | :orange_circle: Важно | Хардкод ошибок | Все UI файлы | Перевести через i18n |
 | :yellow_circle: Средне | Дублирование типов | `product.types.ts` | Создать `PaginatedResponse<T>` |
 | :yellow_circle: Средне | Лишний `id` в `addProduct` | `product.api.ts` | Создать `CreateProductDto` |
 | :green_circle: Мелочи | Опечатка `colums` | `ProductsTable.tsx` | Исправить на `columns` |
 | :green_circle: Мелочи | Deprecated Breadcrumb API | Все UI файлы | Использовать `items` prop |
-| :green_circle: Мелочи | Лишние Fragments | `AddProductButton.tsx` | Убрать `<></>` |
+| :green_circle: Мелочи | Лишние Fragments | `ProductCreateButton.tsx` | Убрать `<></>` |
