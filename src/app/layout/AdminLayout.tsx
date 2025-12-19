@@ -27,25 +27,19 @@ const AdminLayout = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["2"]}
           items={[
             {
               key: "1",
-              label: t("menu.admin"),
-              onClick: () => navigate(ROUTES.admin),
-            },
-            {
-              key: "2",
               label: t("menu.products"),
               onClick: () => navigate(ROUTES.products),
             },
             {
-              key: "3",
+              key: "2",
               label: t("menu.users"),
               onClick: () => navigate(ROUTES.notFound),
             },
             {
-              key: "4",
+              key: "3",
               label: t("menu.posts"),
               onClick: () => navigate(ROUTES.notFound),
             },
