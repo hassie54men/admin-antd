@@ -1,15 +1,14 @@
 import { useGetSingleProduct } from "../model/product.queries.ts";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Button, Card, Flex, Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
 import { useDeleteProduct } from "../model/products.mutations.ts";
 import AdminPageHeader from "../../../shared/ui/AdminPageHeader.tsx";
-import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
+import EditButton from "../../../shared/ui/EditButton.tsx";
 
 const ProductCard = () => {
   const { t } = useTranslation();
   const { id } = useParams();
-  const navigate = useNavigate();
   const productId = id ?? "";
   const { data, isLoading, isError } = useGetSingleProduct(productId);
   const { mutate: deleteProductMutate, isPending: deletePending } =
@@ -29,14 +28,7 @@ const ProductCard = () => {
         title={t("products.product")}
         actions={
           <Flex gap={10}>
-            <Button
-              type="primary"
-              onClick={() =>
-                navigate(`${ADMIN_ROUTES.PRODUCTS}/edit/${productId}`)
-              }
-            >
-              {t("products.edit")}
-            </Button>
+            <EditButton productId={productId} />
             <Button
               danger
               type="primary"
