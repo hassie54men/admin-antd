@@ -1,9 +1,12 @@
 import ProductForm from "../ui/ProductForm.tsx";
+import ProductCreatePageWrapper from "./ProductCreatePageWrapper.tsx";
 
 const ProductCreatePage = () => {
   return (
     <>
-      <ProductForm />
+      <ProductCreatePageWrapper>
+        <ProductForm />
+      </ProductCreatePageWrapper>
     </>
   );
 };

@@ -4,7 +4,6 @@ import type { ProductFormData } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
-import AdminPageHeader from "../../../shared/ui/AdminPageHeader.tsx";
 
 type FieldType = {
   id?: number;
@@ -42,15 +41,6 @@ const ProductForm = () => {
 
   return (
     <>
-      <AdminPageHeader
-        breadcrumbs={[
-          { title: t("products.products") },
-          { title: t("products.product") },
-          { title: t("products.create") },
-        ]}
-        title={t("products.product")}
-      />
-
       <Card>
         <Form
           layout="vertical"
