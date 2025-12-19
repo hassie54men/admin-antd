@@ -4,6 +4,7 @@ import { Breadcrumb, Button, Card, Flex, Form, Input, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { useDeleteProduct } from "../model/products.mutations.ts";
 import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
+import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 
 const ProductCard = () => {
   const { t } = useTranslation();
@@ -40,7 +41,9 @@ const ProductCard = () => {
         <Flex gap={10}>
           <Button
             type="primary"
-            onClick={() => navigate(`/products/${productId}/edit`)}
+            onClick={() =>
+              navigate(`${ADMIN_ROUTES.PRODUCTS}/edit/${productId}`)
+            }
           >
             {t("products.edit")}
           </Button>

@@ -27,8 +27,7 @@ const UpdateProduct = () => {
     updateProduct(
       { ...values, id: productId },
       {
-        onSuccess: () =>
-          navigate(ADMIN_ROUTES.SHOW_PRODUCT.replace(":id", String(productId))),
+        onSuccess: () => navigate(`${ADMIN_ROUTES.PRODUCTS}/show/${productId}`),
       },
     );
   };
@@ -105,9 +104,7 @@ const UpdateProduct = () => {
                 danger
                 type={"primary"}
                 onClick={() =>
-                  navigate(
-                    ADMIN_ROUTES.SHOW_PRODUCT.replace(":id", String(productId)),
-                  )
+                  navigate(`${ADMIN_ROUTES.PRODUCTS}/show/${productId}`)
                 }
               >
                 {t("products.cancelEdit")}

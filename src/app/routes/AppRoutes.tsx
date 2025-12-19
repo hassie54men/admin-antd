@@ -21,22 +21,20 @@ const AppRoutes = () => {
           <Route path={APP_ROUTES.login} element={<Login />} />
         </Route>
         <Route element={<ProtectedRoute />}>
-          <Route path={APP_ROUTES.admin} element={<AdminLayout />}>
-            <Route index element={<Admin />} />
-          </Route>
-
           <Route element={<AdminLayout />}>
+            <Route path={APP_ROUTES.admin} element={<Admin />} />
+
             <Route
               path={ADMIN_ROUTES.PRODUCTS}
               element={<ProductsListPage />}
             />
             <Route
-              path={ADMIN_ROUTES.SHOW_PRODUCT}
-              element={<ProductSingleListPage />}
-            />
-            <Route
               path={ADMIN_ROUTES.ADD_PRODUCT}
               element={<ProductAddInPage />}
+            />
+            <Route
+              path={ADMIN_ROUTES.SHOW_PRODUCT}
+              element={<ProductSingleListPage />}
             />
             <Route
               path={ADMIN_ROUTES.EDIT_PRODUCT}
