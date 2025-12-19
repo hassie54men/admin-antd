@@ -1,11 +1,12 @@
-import { Breadcrumb, Flex, Table, Typography } from "antd";
+import { Table } from "antd";
 import { useGetSearchProduct } from "../model/product.queries.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
-import AddProductButton from "./AddProductButton.tsx";
+import ProductCreateButton from "./ProductCreateButton.tsx";
 import Search from "../../../shared/ui/Search.tsx";
 import { useSearchQuery } from "../../../shared/hooks/useSearchQuery.ts";
 import { useProductColumns } from "../hooks/useProductColumns";
+import ProductTableHeader from "../pages/ProductTableHeader.tsx";
 
 const ProductsTable = () => {
   const { q } = useSearchQuery();
@@ -19,32 +20,16 @@ const ProductsTable = () => {
 
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
-        <Breadcrumb.Item></Breadcrumb.Item>
-      </Breadcrumb>
-      <Flex
-        vertical
-        style={{
-          marginBottom: 16,
-          gap: 8,
-        }}
-      >
-        <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
-          {t("products.product")}
-        </Typography>
-        <Flex
-          justify={"space-between"}
-          align={"center"}
-          style={{
-            marginBottom: 16,
-          }}
-        >
-          <Search />
-
-          <AddProductButton />
-        </Flex>
-      </Flex>
+      <ProductTableHeader
+        actions={
+          <>
+            <Search />
+            <ProductCreateButton />
+          </>
+        }
+        breadcrumbs={[{ title: t("products.products") }, { title: "" }]}
+        title={t("products.product")}
+      />
 
       <Table<Product>
         dataSource={data?.products}

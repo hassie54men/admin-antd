@@ -12,7 +12,7 @@ import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 import { useEffect } from "react";
 import { initFormMapper } from "../model/mappers/initForm";
 
-const UpdateProduct = () => {
+const ProductUpdateForm = () => {
   const { t } = useTranslation();
   const { id } = useParams();
 
@@ -118,4 +118,4 @@ const UpdateProduct = () => {
   );
 };
 
-export default UpdateProduct;
+export default ProductUpdateForm;

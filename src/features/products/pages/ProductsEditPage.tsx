@@ -1,7 +1,7 @@
-import UpdateProduct from "../ui/UpdateProduct.tsx";
+import ProductUpdateForm from "../ui/ProductUpdateForm.tsx";
 
 const ProductsEditPage = () => {
-  return <UpdateProduct />;
+  return <ProductUpdateForm />;
 };
 
 export default ProductsEditPage;

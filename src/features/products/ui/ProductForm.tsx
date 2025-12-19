@@ -14,7 +14,7 @@ type FieldType = {
   category?: string;
 };
 
-const AddProduct = () => {
+const ProductForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [form] = Form.useForm();
@@ -110,4 +110,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default ProductForm;

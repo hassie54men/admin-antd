@@ -1,9 +1,9 @@
-import AddProduct from "../ui/AddProduct.tsx";
+import ProductForm from "../ui/ProductForm.tsx";
 
 const ProductCreatePage = () => {
   return (
     <>
-      <AddProduct />
+      <ProductForm />
     </>
   );
 };

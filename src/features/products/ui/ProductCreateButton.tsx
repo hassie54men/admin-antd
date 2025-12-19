@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 import { useTranslation } from "react-i18next";
 
-const AddProductButton = () => {
+const ProductCreateButton = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (
@@ -15,4 +15,4 @@ const AddProductButton = () => {
   );
 };
 
-export default AddProductButton;
+export default ProductCreateButton;
