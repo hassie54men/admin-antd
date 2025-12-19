@@ -1,7 +1,7 @@
 import ProductCard from "../ui/ProductCard.tsx";
 
-const ProductSingleListPage = () => {
+const ProductShowPage = () => {
   return <ProductCard />;
 };
 
-export default ProductSingleListPage;
+export default ProductShowPage;

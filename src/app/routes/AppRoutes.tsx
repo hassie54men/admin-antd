@@ -8,8 +8,8 @@ import Admin from "../../pages/admin-page/Admin.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import { APP_ROUTES, ADMIN_ROUTES } from "../../shared/constants/routes.ts";
 import ProductsListPage from "../../features/products/pages/ProductsListPage.tsx";
-import ProductSingleListPage from "../../features/products/pages/ProductSingleListPage.tsx";
-import ProductAddInPage from "../../features/products/pages/ProductAddInPage.tsx";
+import ProductShowPage from "../../features/products/pages/ProductShowPage.tsx";
+import ProductCreatePage from "../../features/products/pages/ProductCreatePage.tsx";
 import ProductsEditPage from "../../features/products/pages/ProductsEditPage.tsx";
 
 const AppRoutes = () => {
@@ -30,11 +30,11 @@ const AppRoutes = () => {
             />
             <Route
               path={ADMIN_ROUTES.ADD_PRODUCT}
-              element={<ProductAddInPage />}
+              element={<ProductCreatePage />}
             />
             <Route
               path={ADMIN_ROUTES.SHOW_PRODUCT}
-              element={<ProductSingleListPage />}
+              element={<ProductShowPage />}
             />
             <Route
               path={ADMIN_ROUTES.EDIT_PRODUCT}

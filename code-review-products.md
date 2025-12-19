@@ -475,8 +475,8 @@ return <Button>...</Button>;
 
 ```tsx
 const ProductsListPage = () => <ProductsTable />;
-const ProductSingleListPage = () => <ProductCard />;
-const ProductAddInPage = () => <AddProduct />;
+const ProductShowPage = () => <ProductCard />;
+const ProductCreatePage = () => <AddProduct />;
 const ProductsEditPage = () => <UpdateProduct />;
 ```
 

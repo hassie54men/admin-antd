@@ -10,6 +10,7 @@ import { useEditProduct } from "../model/products.mutations.ts";
 import AdminPageHeader from "../../../shared/ui/AdminPageHeader.tsx";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 import { useEffect } from "react";
+import { initFormMapper } from "../model/mappers/initForm";
 
 const UpdateProduct = () => {
   const { t } = useTranslation();
@@ -34,14 +35,11 @@ const UpdateProduct = () => {
 
   useEffect(() => {
     if (data) {
-      const mappedData: ProductFormData = {
-        ...data,
-        price: data.price.toString(),
-        rating: data.rating.toString(),
-        id: data.id.toString(),
-      };
+      const mappedData = initFormMapper(data);
 
-      form.setFieldsValue(mappedData);
+      if (mappedData) {
+        form.setFieldsValue(mappedData);
+      }
     }
   }, [data, form]);
 

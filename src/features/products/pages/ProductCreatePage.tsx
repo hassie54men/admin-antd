@@ -1,6 +1,6 @@
 import AddProduct from "../ui/AddProduct.tsx";
 
-const ProductAddInPage = () => {
+const ProductCreatePage = () => {
   return (
     <>
       <AddProduct />
@@ -8,4 +8,4 @@ const ProductAddInPage = () => {
   );
 };
 
-export default ProductAddInPage;
+export default ProductCreatePage;
