@@ -1,11 +1,10 @@
 import { Typography } from "antd";
 import type { Product } from "../model/product.types";
-import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-import { ADMIN_ROUTES } from "../../../shared/constants/routes";
+import IdCellLink from "../../../shared/ui/IdCellLink.tsx";
+import { Resources } from "../../../shared/types/api.ts";
 
 export const useProductColumns = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const columns = [
@@ -14,11 +13,11 @@ export const useProductColumns = () => {
       dataIndex: "id",
       key: "id",
       render: (text: number, record: Product) => (
-        <a
-          onClick={() => navigate(`${ADMIN_ROUTES.PRODUCTS}/show/${record.id}`)}
-        >
-          {text}
-        </a>
+        <IdCellLink
+          text={text}
+          record={record}
+          recourses={Resources.PRODUCTS}
+        />
       ),
     },
     {
