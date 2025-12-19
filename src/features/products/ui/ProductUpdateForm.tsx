@@ -7,7 +7,6 @@ import type {
 } from "../model/product.types.ts";
 import { useGetSingleProduct } from "../model/product.queries.ts";
 import { useEditProduct } from "../model/products.mutations.ts";
-import AdminPageHeader from "../../../shared/ui/AdminPageHeader.tsx";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 import { useEffect } from "react";
 import { initFormMapper } from "../model/mappers/initForm";
@@ -49,15 +48,6 @@ const ProductUpdateForm = () => {
 
   return (
     <>
-      <AdminPageHeader
-        breadcrumbs={[
-          { title: t("products.products") },
-          { title: t("products.product") },
-          { title: t("products.edit") },
-        ]}
-        title={t("products.product")}
-      />
-
       <Card loading={isLoading}>
         <Form layout="vertical" onFinish={handleFinish} form={form}>
           <Flex gap={16} wrap>
