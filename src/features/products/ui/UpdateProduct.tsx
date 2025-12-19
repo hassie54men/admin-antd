@@ -5,7 +5,7 @@ import type { Product } from "../model/product.types.ts";
 import { useGetSingleProduct } from "../model/product.queries.ts";
 import { useUpdateProduct } from "../model/products.mutations.ts";
 import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
-import { ROUTES } from "../../../shared/constants/routes.ts";
+import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 import { useEffect } from "react";
 
 const UpdateProduct = () => {
@@ -28,7 +28,7 @@ const UpdateProduct = () => {
       { ...values, id: productId },
       {
         onSuccess: () =>
-          navigate(ROUTES.product.replace(":id", String(productId))),
+          navigate(ADMIN_ROUTES.SHOW_PRODUCT.replace(":id", String(productId))),
       },
     );
   };
@@ -105,7 +105,9 @@ const UpdateProduct = () => {
                 danger
                 type={"primary"}
                 onClick={() =>
-                  navigate(ROUTES.product.replace(":id", String(productId)))
+                  navigate(
+                    ADMIN_ROUTES.SHOW_PRODUCT.replace(":id", String(productId)),
+                  )
                 }
               >
                 {t("products.cancelEdit")}

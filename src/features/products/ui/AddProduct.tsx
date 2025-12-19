@@ -14,7 +14,7 @@ import { useAddProduct } from "../model/products.mutations.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { ROUTES } from "../../../shared/constants/routes.ts";
+import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
 
 type FieldType = {
@@ -34,7 +34,7 @@ const AddProduct = () => {
     addProductMutate(values, {
       onSuccess: () => {
         form.resetFields();
-        navigate(ROUTES.products);
+        navigate(ADMIN_ROUTES.PRODUCTS);
       },
       onError: () => {
         notification.error({

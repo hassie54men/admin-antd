@@ -36,7 +36,8 @@ src/
 │       └── ui/       # Feature-specific UI components
 ├── pages/            # Standalone pages (Home, Admin)
 ├── shared/           # Shared utilities
-│   ├── constants/    # App constants (queryClient, storage keys)
+│   ├── constants/    # App constants (queryClient, storage keys, routes)
+│   ├── hooks/        # Custom hooks (useDebounce, useSearchQuery)
 │   ├── types/        # Common TypeScript types
 │   └── ui/           # Reusable UI components
 └── i18n.ts           # i18next configuration
@@ -68,3 +69,10 @@ src/
 - react-i18next (internationalization)
 - Husky + lint-staged (pre-commit hooks)
 - Commitlint (conventional commits)
+
+## Environment Variables
+
+Create a `.env` file with:
+```
+VITE_API_URL=https://dummyjson.com
+```

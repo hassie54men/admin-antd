@@ -2,7 +2,7 @@ import LoginButton from "../../features/auth/ui/LoginButton.tsx";
 import { Header } from "antd/es/layout/layout";
 import { Avatar } from "antd";
 import { useNavigate } from "react-router";
-import { ROUTES } from "../../shared/constants/routes.ts";
+import { APP_ROUTES } from "../../shared/constants/routes.ts";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const Home = () => {
             cursor: "pointer",
           }}
           size={48}
-          onClick={() => navigate(ROUTES.admin)}
+          onClick={() => navigate(APP_ROUTES.admin)}
         >
           A
         </Avatar>

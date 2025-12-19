@@ -3,7 +3,7 @@ import { useGetUserQuery } from "../model/auth.queries.ts";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { logout } from "../model/auth.api.ts";
-import { ROUTES } from "../../../shared/constants/routes.ts";
+import { APP_ROUTES } from "../../../shared/constants/routes.ts";
 
 const LoginButton = () => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const LoginButton = () => {
   };
 
   const navigateToLogin = () => {
-    navigate(ROUTES.login);
+    navigate(APP_ROUTES.login);
   };
 
   if (!user || isError) {
