@@ -1,7 +1,12 @@
 import ProductCard from "../ui/ProductCard.tsx";
+import ProductShowPageWrapper from "./ProductShowPageWrapper.tsx";
 
 const ProductShowPage = () => {
-  return <ProductCard />;
+  return (
+    <ProductShowPageWrapper>
+      <ProductCard />;
+    </ProductShowPageWrapper>
+  );
 };
 
 export default ProductShowPage;
