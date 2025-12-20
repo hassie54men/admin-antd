@@ -1,16 +1,19 @@
 import { Breadcrumb, type BreadcrumbProps, Flex, Typography } from "antd";
-import type { ReactNode } from "react";
+import Search from "./Search.tsx";
+import CreateButton from "./CreateButton.tsx";
 
 interface PageTableProps {
   breadcrumbs: BreadcrumbProps["items"];
   title: string;
-  actions?: ReactNode;
+  createLabel: string;
+  createPath: string;
 }
 
-const ProductTableHeader = ({
+const TableHeader = ({
   breadcrumbs,
   title,
-  actions,
+  createPath,
+  createLabel,
 }: PageTableProps) => {
   return (
     <>
@@ -32,11 +35,12 @@ const ProductTableHeader = ({
             marginBottom: 16,
           }}
         >
-          {actions}
+          <Search />
+          <CreateButton label={createLabel} to={createPath} />
         </Flex>
       </Flex>
     </>
   );
 };
 
-export default ProductTableHeader;
+export default TableHeader;
