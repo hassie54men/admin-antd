@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { useDeleteProduct } from "../model/products.mutations.ts";
 import type { ReactNode } from "react";
+import { Resources } from "../../../shared/types/api.ts";
 
 interface Props {
   children: ReactNode;
@@ -27,7 +28,7 @@ const ProductShowPageWrapper = ({ children }: Props) => {
         title={t("products.product")}
         actions={
           <Flex gap={10}>
-            <EditButton productId={productId} />
+            <EditButton id={productId} resource={Resources.PRODUCTS} />
             <Button
               danger
               type="primary"

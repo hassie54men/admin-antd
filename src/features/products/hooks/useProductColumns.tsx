@@ -1,7 +1,7 @@
 import { Typography } from "antd";
 import type { Product } from "../model/product.types";
 import { useTranslation } from "react-i18next";
-import IdCellLink from "../../../shared/ui/IdCellLink.tsx";
+import IdCellLinkProps from "../../../shared/ui/IdCellLinkProps.tsx";
 import { Resources } from "../../../shared/types/api.ts";
 
 export const useProductColumns = () => {
@@ -13,10 +13,10 @@ export const useProductColumns = () => {
       dataIndex: "id",
       key: "id",
       render: (text: number, record: Product) => (
-        <IdCellLink
+        <IdCellLinkProps
           text={text}
           record={record}
-          recourses={Resources.PRODUCTS}
+          recourse={Resources.PRODUCTS}
         />
       ),
     },
