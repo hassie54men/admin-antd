@@ -4,17 +4,15 @@ import { Resources } from "../types/api.ts";
 import { useTranslation } from "react-i18next";
 
 interface Props {
-  productId: string;
+  id: string;
+  resource: Resources;
 }
 
-const EditButton = ({ productId }: Props) => {
+const EditButton = ({ id, resource }: Props) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <Button
-      type="primary"
-      onClick={() => navigate(`/${Resources.PRODUCTS}/edit/${productId}`)}
-    >
+    <Button type="primary" onClick={() => navigate(`/${resource}/edit/${id}`)}>
       {t("products.edit")}
     </Button>
   );
