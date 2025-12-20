@@ -2,11 +2,10 @@ import { Table } from "antd";
 import { useGetSearchProduct } from "../model/product.queries.ts";
 import type { Product } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
-import ProductCreateButton from "./ProductCreateButton.tsx";
-import Search from "../../../shared/ui/Search.tsx";
 import { useSearchQuery } from "../../../shared/hooks/useSearchQuery.ts";
 import { useProductColumns } from "../hooks/useProductColumns";
-import ProductTableHeader from "../pages/ProductTableHeader.tsx";
+import TableHeader from "../../../shared/ui/TableHeader.tsx";
+import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 
 const ProductsTable = () => {
   const { q } = useSearchQuery();
@@ -20,15 +19,11 @@ const ProductsTable = () => {
 
   return (
     <>
-      <ProductTableHeader
-        actions={
-          <>
-            <Search />
-            <ProductCreateButton />
-          </>
-        }
+      <TableHeader
         breadcrumbs={[{ title: t("products.products") }, { title: "" }]}
         title={t("products.product")}
+        createLabel={t("products.add")}
+        createPath={ADMIN_ROUTES.ADD_PRODUCT}
       />
 
       <Table<Product>
