@@ -1,11 +1,20 @@
 import ProductUpdateForm from "../ui/ProductUpdateForm.tsx";
-import ProductEditPageWrapper from "./ProductEditPageWrapper.tsx";
+import EditPageWrapper from "../../../shared/ui/EditPageWrapper.tsx";
+import { useTranslation } from "react-i18next";
 
 const ProductsEditPage = () => {
+  const { t } = useTranslation();
   return (
-    <ProductEditPageWrapper>
+    <EditPageWrapper
+      title={t("products.product")}
+      breadcrumbs={[
+        { title: t("products.products") },
+        { title: t("products.product") },
+        { title: t("products.edit") },
+      ]}
+    >
       <ProductUpdateForm />;
-    </ProductEditPageWrapper>
+    </EditPageWrapper>
   );
 };
 
