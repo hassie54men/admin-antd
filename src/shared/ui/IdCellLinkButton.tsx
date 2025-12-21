@@ -12,7 +12,7 @@ interface Props<T extends recordId> {
   recourse: Resources;
 }
 
-const IdCellLinkProps = <T extends recordId>({
+const IdCellLinkButton = <T extends recordId>({
   text,
   record,
   recourse,
@@ -25,4 +25,4 @@ const IdCellLinkProps = <T extends recordId>({
   );
 };
 
-export default IdCellLinkProps;
+export default IdCellLinkButton;
