@@ -1,25 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProducts, searchProduct, getSingleProduct } from "./product.api.ts";
+import { searchProduct, getSingleProduct } from "./product.api.ts";
 import type { Product, ProductsListResponse } from "./product.types.ts";
 import { QUERY_KEYS } from "../../../api/queryKeys.ts";
 
-export function useGetProductsQuery() {
-  return useQuery<ProductsListResponse>({
-    queryKey: [QUERY_KEYS.products.list()],
-    queryFn: getProducts,
-  });
-}
-
-export function useGetSingleProduct(id: number) {
+export function useGetSingleProduct(id: string) {
   return useQuery<Product>({
-    queryKey: [QUERY_KEYS.products.single(id)],
+    queryKey: QUERY_KEYS.products.single(id),
     queryFn: () => getSingleProduct(id),
   });
 }
 
 export function useGetSearchProduct(query: string) {
-  return useQuery({
-    queryKey: [QUERY_KEYS.products.search(query)],
+  return useQuery<ProductsListResponse>({
+    queryKey: QUERY_KEYS.products.search(query),
     queryFn: () => searchProduct(query),
   });
 }

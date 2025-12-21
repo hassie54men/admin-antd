@@ -1,18 +1,13 @@
 import { useGetSingleProduct } from "../model/product.queries.ts";
-import { useNavigate, useParams } from "react-router";
-import { Breadcrumb, Button, Card, Flex, Form, Input, Typography } from "antd";
+import { useParams } from "react-router";
+import { Card, Flex, Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
-import { useDeleteProduct } from "../model/products.mutations.ts";
-import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
 
 const ProductCard = () => {
   const { t } = useTranslation();
   const { id } = useParams();
-  const navigate = useNavigate();
-  const productId = Number(id);
+  const productId = id ?? "";
   const { data, isLoading, isError } = useGetSingleProduct(productId);
-  const { mutate: deleteProductMutate, isPending: deletePending } =
-    useDeleteProduct();
 
   if (!data && isError) {
     return <div>PRODUCT LOADING ERROR</div>;
@@ -20,41 +15,6 @@ const ProductCard = () => {
 
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
-        <Breadcrumb.Item>{t("products.product")}</Breadcrumb.Item>
-      </Breadcrumb>
-      <Flex
-        align={"center"}
-        justify={"space-between"}
-        gap={8}
-        style={{ marginBottom: 16 }}
-      >
-        <Flex align={"center"} gap={8}>
-          <BackArrowButton />
-          <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
-            {t("products.product")}
-          </Typography>
-        </Flex>
-
-        <Flex gap={10}>
-          <Button
-            type="primary"
-            onClick={() => navigate(`/products/${productId}/edit`)}
-          >
-            {t("products.edit")}
-          </Button>
-          <Button
-            danger
-            type="primary"
-            loading={deletePending}
-            onClick={() => deleteProductMutate(productId)}
-          >
-            {t("text.delete")}
-          </Button>
-        </Flex>
-      </Flex>
-
       <Card loading={isLoading}>
         <Form layout="vertical">
           <Flex gap={16} wrap>

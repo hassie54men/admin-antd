@@ -1,21 +1,29 @@
+import { type PaginatedResponse, Resources } from "../../../shared/types/api";
+
 export interface Product {
-  id: number;
+  id: string;
   title: string;
   category: string;
   price: number;
   rating: number;
 }
 
-export interface ProductsListResponse {
-  products: Product[];
-  total: number;
-  skip: number;
-  limit: number;
+export type ProductsListResponse = PaginatedResponse<
+  Resources.PRODUCTS,
+  Product
+>;
+
+export interface ProductRequest {
+  title: string;
+  price: string;
+  rating: string;
+  category: string;
 }
 
-export interface ProductSearchResponse {
-  products: Product[];
-  total: number;
-  skip: number;
-  limit: number;
+export interface ProductFormData {
+  id?: string;
+  title: string;
+  category: string;
+  price: string;
+  rating: string;
 }

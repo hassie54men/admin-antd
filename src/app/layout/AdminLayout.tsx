@@ -1,15 +1,11 @@
-import { Layout, Menu } from "antd";
-import { Outlet, useNavigate } from "react-router";
+import { Layout } from "antd";
+import { Outlet } from "react-router";
 import AdminHeader from "../../pages/admin-page/AdminHeader.tsx";
-import { ROUTES } from "../../shared/constants/routes.ts";
-import { useTranslation } from "react-i18next";
+import { AdminMenu } from "../../features/adminMenu/ui/AdminMenu";
 
 const { Sider, Content } = Layout;
 
 const AdminLayout = () => {
-  const navigate = useNavigate();
-  const { t } = useTranslation();
-
   const styles = {
     layout: { height: "100vh" }, // весь layout на высоту окна
     innerLayout: { height: "100%" }, // правая часть заполняет высоту
@@ -22,33 +18,13 @@ const AdminLayout = () => {
 
   return (
     <Layout style={styles.layout}>
-      <Sider trigger={null}>
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          items={[
-            {
-              key: "1",
-              label: t("menu.products"),
-              onClick: () => navigate(ROUTES.products),
-            },
-            {
-              key: "2",
-              label: t("menu.users"),
-              onClick: () => navigate(ROUTES.notFound),
-            },
-            {
-              key: "3",
-              label: t("menu.posts"),
-              onClick: () => navigate(ROUTES.notFound),
-            },
-          ]}
-        />
-      </Sider>
+      <AdminHeader />
 
       <Layout style={styles.innerLayout}>
-        <AdminHeader />
+        <Sider trigger={null}>
+          <div className="demo-logo-vertical" />
+          <AdminMenu />
+        </Sider>
         <Content style={styles.content}>
           <Outlet />
         </Content>

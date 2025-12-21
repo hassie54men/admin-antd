@@ -5,7 +5,7 @@ export const ENDPOINTS = {
   },
   products: {
     list: "/products",
-    single: (id: number) => `/products/${id}`,
+    single: (id: string) => `/products/${id}`,
     search: "/products/search",
     add: "/products/add",
   },

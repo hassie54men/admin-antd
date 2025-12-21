@@ -1,21 +1,9 @@
-import {
-  Breadcrumb,
-  Button,
-  Card,
-  Col,
-  Flex,
-  Form,
-  Input,
-  notification,
-  Row,
-  Typography,
-} from "antd";
-import { useAddProduct } from "../model/products.mutations.ts";
-import type { Product } from "../model/product.types.ts";
+import { App, Button, Card, Col, Form, Input, Row } from "antd";
+import { useCreateProduct } from "../model/products.mutations.ts";
+import type { ProductFormData } from "../model/product.types.ts";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { ROUTES } from "../../../shared/constants/routes.ts";
-import BackArrowButton from "../../../shared/ui/BackArrowButton.tsx";
+import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 
 type FieldType = {
   id?: number;
@@ -25,16 +13,22 @@ type FieldType = {
   category?: string;
 };
 
-const AddProduct = () => {
+const ProductForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const { mutate: addProductMutate, isPending } = useAddProduct();
-  const onFinish = async (values: Product) => {
-    addProductMutate(values, {
+  const { notification } = App.useApp();
+  const { mutate: createProduct, isPending } = useCreateProduct();
+
+  const onFinish = async (values: ProductFormData) => {
+    createProduct(values, {
       onSuccess: () => {
         form.resetFields();
-        navigate(ROUTES.products);
+        notification.success({
+          message: "Успешно",
+          description: "Сущность успешно создана",
+        });
+        navigate(ADMIN_ROUTES.PRODUCTS);
       },
       onError: () => {
         notification.error({
@@ -44,20 +38,9 @@ const AddProduct = () => {
       },
     });
   };
+
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>{t("products.products")}</Breadcrumb.Item>
-        <Breadcrumb.Item>{t("products.product")}</Breadcrumb.Item>
-        <Breadcrumb.Item>{t("products.create")}</Breadcrumb.Item>
-      </Breadcrumb>
-      <Flex gap={8} align={"center"} style={{ marginBottom: 16 }}>
-        <BackArrowButton />
-        <Typography style={{ fontSize: "24px", fontWeight: "bold" }}>
-          {t("products.product")}
-        </Typography>
-      </Flex>
-
       <Card>
         <Form
           layout="vertical"
@@ -117,4 +100,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default ProductForm;
