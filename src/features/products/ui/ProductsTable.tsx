@@ -6,12 +6,19 @@ import { useSearchQuery } from "../../../shared/hooks/useSearchQuery.ts";
 import { useProductColumns } from "../hooks/useProductColumns";
 import TableHeader from "../../../shared/ui/TableHeader.tsx";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
+import usePagination from "../../../shared/hooks/usePagination.tsx";
 
 const ProductsTable = () => {
   const { q } = useSearchQuery();
-  const { data, isLoading, isError } = useGetSearchProduct(q);
   const { t } = useTranslation();
   const { columns } = useProductColumns();
+  const { handlePaginationChange, pageSize, page } = usePagination();
+  const { data, isLoading, isError } = useGetSearchProduct(
+    q,
+    (page - 1) * pageSize,
+    pageSize,
+  );
+  const total = data?.total ?? 0;
 
   if (isError) {
     return <div>{t("products.error")}</div>;
@@ -31,6 +38,12 @@ const ProductsTable = () => {
         columns={columns}
         loading={isLoading}
         rowKey="id"
+        pagination={{
+          current: page,
+          pageSize,
+          total,
+        }}
+        onChange={handlePaginationChange}
       />
     </>
   );
