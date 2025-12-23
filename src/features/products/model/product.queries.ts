@@ -16,7 +16,7 @@ export function useGetSearchProduct(
   limit: number,
 ) {
   return useQuery<ProductsListResponse>({
-    queryKey: QUERY_KEYS.products.search(query, limit, skip),
-    queryFn: () => searchProduct(query, limit, skip),
+    queryKey: QUERY_KEYS.products.search(query, skip, limit),
+    queryFn: () => searchProduct(query, skip, limit),
   });
 }
