@@ -36,6 +36,24 @@
     "users": "Users",
     "posts": "Posts"
   },
+  "users": {
+    "id": "ID",
+    "userCard": "User card",
+    "backButton": "Back",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "age": "Age",
+    "email": "Email",
+    "gender": "Gender",
+    "add": "Add user",
+    "user": "User",
+    "users": "Users",
+    "search": "Search",
+    "create": "Create",
+    "save": "Save",
+    "edit": "Edit",
+    "cancelEdit": "Cancel"
+  },
 
   "changeLang": "change language"
 }

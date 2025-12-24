@@ -11,6 +11,7 @@ import ProductsListPage from "../../features/products/pages/ProductsListPage.tsx
 import ProductShowPage from "../../features/products/pages/ProductShowPage.tsx";
 import ProductCreatePage from "../../features/products/pages/ProductCreatePage.tsx";
 import ProductsEditPage from "../../features/products/pages/ProductsEditPage.tsx";
+import UserListPage from "../../features/users/pages/UserListPage.tsx";
 
 const AppRoutes = () => {
   return (
@@ -40,6 +41,7 @@ const AppRoutes = () => {
               path={ADMIN_ROUTES.EDIT_PRODUCT}
               element={<ProductsEditPage />}
             />
+            <Route path={ADMIN_ROUTES.USERS} element={<UserListPage />} />
           </Route>
         </Route>
         <Route path={APP_ROUTES.notFound} element={<div>NotFound</div>} />
