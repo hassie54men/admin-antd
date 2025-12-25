@@ -12,6 +12,7 @@ import ProductShowPage from "../../features/products/pages/ProductShowPage.tsx";
 import ProductCreatePage from "../../features/products/pages/ProductCreatePage.tsx";
 import ProductsEditPage from "../../features/products/pages/ProductsEditPage.tsx";
 import UserListPage from "../../features/users/pages/UserListPage.tsx";
+import UserShowPage from "../../features/users/pages/UserShowPage.tsx";
 
 const AppRoutes = () => {
   return (
@@ -42,6 +43,7 @@ const AppRoutes = () => {
               element={<ProductsEditPage />}
             />
             <Route path={ADMIN_ROUTES.USERS} element={<UserListPage />} />
+            <Route path={ADMIN_ROUTES.SHOW_USER} element={<UserShowPage />} />
           </Route>
         </Route>
         <Route path={APP_ROUTES.notFound} element={<div>NotFound</div>} />

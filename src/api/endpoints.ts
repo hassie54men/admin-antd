@@ -11,5 +11,7 @@ export const ENDPOINTS = {
   },
   users: {
     list: "/users",
+    search: "/users/search",
+    single: (id: string) => `/users/${id}`,
   },
 };

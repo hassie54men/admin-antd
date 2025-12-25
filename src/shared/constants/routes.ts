@@ -15,6 +15,8 @@ export const ADMIN_ROUTES = {
 
   USERS: "/users",
   ADD_USER: "/users/create",
+  SHOW_USER: "/users/show/:id",
+  EDIT_USER: "/users/edit/:id",
 
   POSTS: "/posts",
 };

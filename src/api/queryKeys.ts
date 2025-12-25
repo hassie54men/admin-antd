@@ -13,5 +13,6 @@ export const QUERY_KEYS = {
     all: ["users"] as const,
     list: () => [QUERY_KEYS.users.all, "list"],
     search: (query: string) => [...QUERY_KEYS.users.all, "search", query],
+    single: (id: string) => [...QUERY_KEYS.users.all, "single", id],
   },
 } as const;
