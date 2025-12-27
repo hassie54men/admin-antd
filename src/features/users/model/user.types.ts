@@ -11,5 +11,12 @@ export interface User {
   gender: string;
   email: string;
 }
+export interface UserRequest {
+  firstName: string;
+  lastName: string;
+  age: number;
+  gender: string;
+  email: string;
+}
 
 export type UsersListResponse = PaginatedResponse<Resources.USERS, User>;

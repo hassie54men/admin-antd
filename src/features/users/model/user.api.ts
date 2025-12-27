@@ -1,4 +1,4 @@
-import type { User, UsersListResponse } from "./user.types.ts";
+import type { User, UserRequest, UsersListResponse } from "./user.types.ts";
 import apiClient from "../../../api/apiClient.ts";
 import { ENDPOINTS } from "../../../api/endpoints.ts";
 
@@ -16,5 +16,10 @@ export const getUser = async (id: string) => {
 
 export const deleteUser = async (id: string) => {
   const res = await apiClient.delete(ENDPOINTS.users.single(id));
+  return res.data;
+};
+
+export const addUser = async (data: UserRequest) => {
+  const res = await apiClient.post("/users/create", data);
   return res.data;
 };
