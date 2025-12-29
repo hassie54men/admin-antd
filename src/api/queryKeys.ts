@@ -1,3 +1,5 @@
+import type { UserRequest } from "../features/users/model/user.types.ts";
+
 export const QUERY_KEYS = {
   auth: {
     all: ["auth"] as const,
@@ -14,5 +16,6 @@ export const QUERY_KEYS = {
     list: () => [QUERY_KEYS.users.all, "list"],
     search: (query: string) => [...QUERY_KEYS.users.all, "search", query],
     single: (id: string) => [...QUERY_KEYS.users.all, "single", id],
+    create: (data: UserRequest) => [...QUERY_KEYS.users.all, "crate", data],
   },
 } as const;

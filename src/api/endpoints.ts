@@ -13,5 +13,6 @@ export const ENDPOINTS = {
     list: "/users",
     search: "/users/search",
     single: (id: string) => `/users/${id}`,
+    add: "/users/add",
   },
 };
