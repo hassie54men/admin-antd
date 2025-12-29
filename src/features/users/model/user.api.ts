@@ -23,3 +23,8 @@ export const createUser = async (data: UserRequest) => {
   const res = await apiClient.post(ENDPOINTS.users.add, data);
   return res.data;
 };
+
+export const editUser = async (id: string, data: UserRequest) => {
+  const res = await apiClient.put(ENDPOINTS.users.single(id), data);
+  return res.data;
+};
