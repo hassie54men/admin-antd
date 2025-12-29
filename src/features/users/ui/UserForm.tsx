@@ -1,0 +1,103 @@
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
+import { useCreateUser } from "../model/user.mutations.ts";
+import { Button, Card, Col, Form, Input, notification, Row } from "antd";
+import type { UserRequest } from "../model/user.types.ts";
+import { ENDPOINTS } from "../../../api/endpoints.ts";
+
+const UserForm = () => {
+  const { t } = useTranslation();
+  const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const { mutate: createUser, isPending } = useCreateUser();
+
+  const onFinish = async (values: UserRequest) => {
+    createUser(values, {
+      onSuccess: () => {
+        form.resetFields();
+        notification.success({
+          message: "Успешно",
+          description: "Сущность успешно создана",
+        });
+        navigate(ENDPOINTS.users.list);
+      },
+      onError: () => {
+        notification.error({
+          message: "Ошибка",
+          description: "Ошибка при создании сущности",
+        });
+      },
+    });
+  };
+
+  return (
+    <>
+      <Card>
+        <Form
+          onFinish={onFinish}
+          layout="vertical"
+          style={{ maxWidth: "100%" }}
+        >
+          <Row gutter={16}>
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item<UserRequest>
+                label={t("users.firstName")}
+                name="firstName"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item<UserRequest>
+                label={t("users.lastName")}
+                name="lastName"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item<UserRequest>
+                label={t("users.age")}
+                name="age"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item<UserRequest>
+                label={t("users.gender")}
+                name="gender"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item<UserRequest>
+                label={t("users.email")}
+                name="email"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Form.Item style={{ marginTop: 32, textAlign: "right" }}>
+            <Button type="primary" htmlType="submit" loading={isPending}>
+              {t("products.save")}
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
+    </>
+  );
+};
+
+export default UserForm;

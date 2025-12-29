@@ -19,7 +19,7 @@ export const deleteUser = async (id: string) => {
   return res.data;
 };
 
-export const addUser = async (data: UserRequest) => {
-  const res = await apiClient.post("/users/create", data);
+export const createUser = async (data: UserRequest) => {
+  const res = await apiClient.post(ENDPOINTS.users.add, data);
   return res.data;
 };
