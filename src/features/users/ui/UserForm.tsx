@@ -1,13 +1,14 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { useCreateUser } from "../model/user.mutations.ts";
-import { Button, Card, Col, Form, Input, notification, Row } from "antd";
+import { App, Button, Card, Col, Form, Input, Row } from "antd";
 import type { UserRequest } from "../model/user.types.ts";
 import { ENDPOINTS } from "../../../api/endpoints.ts";
 
 const UserForm = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
+  const { notification } = App.useApp();
   const navigate = useNavigate();
   const { mutate: createUser, isPending } = useCreateUser();
 
@@ -91,7 +92,7 @@ const UserForm = () => {
 
           <Form.Item style={{ marginTop: 32, textAlign: "right" }}>
             <Button type="primary" htmlType="submit" loading={isPending}>
-              {t("products.save")}
+              {t("users.save")}
             </Button>
           </Form.Item>
         </Form>

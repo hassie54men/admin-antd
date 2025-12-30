@@ -6,7 +6,7 @@ import { useGetUser } from "../model/user.queries.ts";
 import type { UserFormData } from "../model/user.types.ts";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes.ts";
 import { useEffect } from "react";
-import { initFormUserMapper } from "../../products/model/mappers/initForm.ts";
+import { initFormUserMapper } from "../model/mappers/initForm.ts";
 
 const UserEdit = () => {
   const { t } = useTranslation();
