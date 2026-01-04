@@ -1,7 +1,17 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { useCreateUser } from "../model/user.mutations.ts";
-import { App, Button, Card, Col, Form, Input, Row } from "antd";
+import {
+  App,
+  Button,
+  Card,
+  Col,
+  Form,
+  Input,
+  InputNumber,
+  Row,
+  Select,
+} from "antd";
 import type { UserRequest } from "../model/user.types.ts";
 import { ENDPOINTS } from "../../../api/endpoints.ts";
 
@@ -44,7 +54,7 @@ const UserForm = () => {
               <Form.Item<UserRequest>
                 label={t("users.firstName")}
                 name="firstName"
-                rules={[{ required: true }]}
+                rules={[{ required: true, message: t("validations.required") }]}
               >
                 <Input />
               </Form.Item>
@@ -54,7 +64,7 @@ const UserForm = () => {
               <Form.Item<UserRequest>
                 label={t("users.lastName")}
                 name="lastName"
-                rules={[{ required: true }]}
+                rules={[{ required: true, message: t("validations.required") }]}
               >
                 <Input />
               </Form.Item>
@@ -64,9 +74,22 @@ const UserForm = () => {
               <Form.Item<UserRequest>
                 label={t("users.age")}
                 name="age"
-                rules={[{ required: true }]}
+                rules={[
+                  {
+                    required: true,
+                    message: t("validations.required"),
+                  },
+                  {
+                    type: "number",
+                    min: 18,
+                    max: 100,
+                    message:
+                      t("validations.ageRange") ||
+                      "Возраст должен быть от 18 до 100 лет",
+                  },
+                ]}
               >
-                <Input />
+                <InputNumber style={{ width: "100%" }} />
               </Form.Item>
             </Col>
 
@@ -74,16 +97,31 @@ const UserForm = () => {
               <Form.Item<UserRequest>
                 label={t("users.gender")}
                 name="gender"
-                rules={[{ required: true }]}
+                rules={[
+                  {
+                    required: true,
+                    message: t("validations.required"),
+                  },
+                ]}
               >
-                <Input />
+                <Select>
+                  <Select.Option value={"male"}>
+                    {t("validations.male")}
+                  </Select.Option>
+                  <Select.Option value={"female"}>
+                    {t("validations.female")}
+                  </Select.Option>
+                </Select>
               </Form.Item>
             </Col>
             <Col xs={24} sm={12} md={6}>
               <Form.Item<UserRequest>
                 label={t("users.email")}
                 name="email"
-                rules={[{ required: true }]}
+                rules={[
+                  { required: true, message: t("validations.required") },
+                  { type: "email", message: t("validations.emailFormat") },
+                ]}
               >
                 <Input />
               </Form.Item>

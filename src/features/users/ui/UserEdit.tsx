@@ -1,4 +1,4 @@
-import { Button, Card, Flex, Form, Input } from "antd";
+import { Button, Card, Flex, Form, Input, InputNumber, Select } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router";
 import { useEditUser } from "../model/user.mutations.ts";
@@ -66,19 +66,37 @@ const UserEdit = () => {
               label={t("users.age")}
               name={"age"}
               style={{ flex: 1, minWidth: 200 }}
+              rules={[
+                {
+                  type: "number",
+                  min: 18,
+                  max: 100,
+                  message:
+                    t("validations.ageRange") ||
+                    "Возраст должен быть от 18 до 100 лет",
+                },
+              ]}
             >
-              <Input />
+              <InputNumber style={{ width: "100%" }} />
             </Form.Item>
             <Form.Item
               label={t("users.gender")}
               name={"gender"}
               style={{ flex: 1, minWidth: 200 }}
             >
-              <Input />
+              <Select>
+                <Select.Option value={"male"}>
+                  {t("validations.male")}
+                </Select.Option>
+                <Select.Option value={"female"}>
+                  {t("validations.female")}
+                </Select.Option>
+              </Select>
             </Form.Item>
             <Form.Item
               label={t("users.email")}
               name={"email"}
+              rules={[{ type: "email", message: t("validations.emailFormat") }]}
               style={{ flex: 1, minWidth: 200 }}
             >
               <Input />
