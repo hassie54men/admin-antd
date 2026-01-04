@@ -54,6 +54,14 @@
     "edit": "Edit",
     "cancelEdit": "Cancel"
   },
+  "validations": {
+    "ageRange": "Age must be between 18 and 100 years old",
+    "required": "Required to fill out",
+    "onlyNumbers": "Only numbers",
+    "emailFormat": "Format: example@mail.com",
+    "male": "male",
+    "female": "female"
+  },
 
   "changeLang": "change language"
 }

@@ -54,6 +54,14 @@
     "users": "Пользователи",
     "posts": "Посты"
   },
+  "validations": {
+    "ageRange": "Возраст должен быть от 18 до 100 лет",
+    "emailFormat": "Формат: example@mail.com",
+    "required": "Обязательно для заполнения",
+    "onlyNumbers": "Только цифры",
+    "male": "мужской",
+    "female": "женский"
+  },
 
   "changeLang": "сменить язык"
 }
