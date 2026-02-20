@@ -65,7 +65,7 @@ export const addProduct = async ({
 
 ```typescript
 // Создать отдельный тип для создания
-export type CreateProductDto = Omit<Product, 'id'>;
+export type CreateProductDto = Omit<Product, "id">;
 
 export const addProduct = async (data: CreateProductDto) => {
   const res = await apiClient.post<Product>(ENDPOINTS.products.add, data);
@@ -105,7 +105,7 @@ export function useDeleteProduct() {
     mutationFn: deleteProduct,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: QUERY_KEYS.products.all
+        queryKey: QUERY_KEYS.products.all,
       });
     },
   });
@@ -118,7 +118,7 @@ export function useAddProduct() {
     mutationFn: addProduct,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: QUERY_KEYS.products.all
+        queryKey: QUERY_KEYS.products.all,
       });
     },
   });
@@ -131,10 +131,10 @@ export function useUpdateProduct() {
     mutationFn: updateProduct,
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: QUERY_KEYS.products.single(data.id)
+        queryKey: QUERY_KEYS.products.single(data.id),
       });
       queryClient.invalidateQueries({
-        queryKey: QUERY_KEYS.products.all
+        queryKey: QUERY_KEYS.products.all,
       });
     },
   });
@@ -164,21 +164,21 @@ queryKey: QUERY_KEYS.products.list(),
 ```typescript
 export function useGetProductsQuery() {
   return useQuery<ProductsListResponse>({
-    queryKey: QUERY_KEYS.products.list(),  // без []
+    queryKey: QUERY_KEYS.products.list(), // без []
     queryFn: getProducts,
   });
 }
 
 export function useGetSingleProduct(id: number) {
   return useQuery<Product>({
-    queryKey: QUERY_KEYS.products.single(id),  // без []
+    queryKey: QUERY_KEYS.products.single(id), // без []
     queryFn: () => getSingleProduct(id),
   });
 }
 
 export function useGetSearchProduct(query: string) {
   return useQuery({
-    queryKey: QUERY_KEYS.products.search(query),  // без []
+    queryKey: QUERY_KEYS.products.search(query), // без []
     queryFn: () => searchProduct(query),
   });
 }
@@ -223,7 +223,7 @@ const PageHeader = ({
   breadcrumbs,
   title,
   showBack = true,
-  actions
+  actions,
 }: PageHeaderProps) => (
   <>
     <Breadcrumb items={breadcrumbs} />
@@ -259,7 +259,9 @@ export default PageHeader;
   actions={
     <Flex gap={10}>
       <Button type="primary">{t("products.edit")}</Button>
-      <Button danger type="primary">{t("text.delete")}</Button>
+      <Button danger type="primary">
+        {t("text.delete")}
+      </Button>
     </Flex>
   }
 />
@@ -278,7 +280,7 @@ import { Button, Card, Col, Flex, Form, Input, Row } from "antd";
 import { useTranslation } from "react-i18next";
 import type { Product } from "../model/product.types";
 
-type ProductFormValues = Omit<Product, 'id'>;
+type ProductFormValues = Omit<Product, "id">;
 
 interface ProductFormProps {
   initialValues?: Partial<Product>;
@@ -489,15 +491,15 @@ const ProductsEditPage = () => <ProductUpdateForm />;
 
 ## Сводная таблица рекомендаций
 
-| Приоритет | Проблема | Файл | Действие |
-|-----------|----------|------|----------|
-| :red_circle: Критично | Двойной массив в queryKey | `product.queries.ts` | Убрать лишние `[]` |
-| :red_circle: Критично | Нет инвалидации кэша | `products.mutations.ts` | Добавить `invalidateQueries` |
-| :orange_circle: Важно | Дублирование PageHeader | `ProductCard`, `ProductForm`, `ProductUpdateForm` | Создать `PageHeader` компонент |
-| :orange_circle: Важно | Дублирование формы | `ProductForm`, `ProductUpdateForm` | Создать `ProductForm` компонент |
-| :orange_circle: Важно | Хардкод ошибок | Все UI файлы | Перевести через i18n |
-| :yellow_circle: Средне | Дублирование типов | `product.types.ts` | Создать `PaginatedResponse<T>` |
-| :yellow_circle: Средне | Лишний `id` в `addProduct` | `product.api.ts` | Создать `CreateProductDto` |
-| :green_circle: Мелочи | Опечатка `colums` | `ProductsTable.tsx` | Исправить на `columns` |
-| :green_circle: Мелочи | Deprecated Breadcrumb API | Все UI файлы | Использовать `items` prop |
-| :green_circle: Мелочи | Лишние Fragments | `ProductCreateButton.tsx` | Убрать `<></>` |
+| Приоритет              | Проблема                   | Файл                                              | Действие                        |
+| ---------------------- | -------------------------- | ------------------------------------------------- | ------------------------------- |
+| :red_circle: Критично  | Двойной массив в queryKey  | `product.queries.ts`                              | Убрать лишние `[]`              |
+| :red_circle: Критично  | Нет инвалидации кэша       | `products.mutations.ts`                           | Добавить `invalidateQueries`    |
+| :orange_circle: Важно  | Дублирование PageHeader    | `ProductCard`, `ProductForm`, `ProductUpdateForm` | Создать `PageHeader` компонент  |
+| :orange_circle: Важно  | Дублирование формы         | `ProductForm`, `ProductUpdateForm`                | Создать `ProductForm` компонент |
+| :orange_circle: Важно  | Хардкод ошибок             | Все UI файлы                                      | Перевести через i18n            |
+| :yellow_circle: Средне | Дублирование типов         | `product.types.ts`                                | Создать `PaginatedResponse<T>`  |
+| :yellow_circle: Средне | Лишний `id` в `addProduct` | `product.api.ts`                                  | Создать `CreateProductDto`      |
+| :green_circle: Мелочи  | Опечатка `colums`          | `ProductsTable.tsx`                               | Исправить на `columns`          |
+| :green_circle: Мелочи  | Deprecated Breadcrumb API  | Все UI файлы                                      | Использовать `items` prop       |
+| :green_circle: Мелочи  | Лишние Fragments           | `ProductCreateButton.tsx`                         | Убрать `<></>`                  |
