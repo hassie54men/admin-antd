@@ -1,8 +1,8 @@
-import { useThemeStore } from "../../store/ThemeStore.tsx";
 import { Switch } from "antd";
 import { SunOutlined, MoonOutlined } from "@ant-design/icons";
+import { useThemeStore } from "../store/ThemeStore.tsx";
 
-const ThemeToggleButton = () => {
+const ThemeSwitcher = () => {
   const { toggleTheme } = useThemeStore();
   return (
     <Switch
@@ -13,4 +13,4 @@ const ThemeToggleButton = () => {
   );
 };
 
-export default ThemeToggleButton;
+export default ThemeSwitcher;

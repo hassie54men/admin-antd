@@ -3,7 +3,7 @@ import { Header } from "antd/es/layout/layout";
 import { Avatar } from "antd";
 import { useNavigate } from "react-router";
 import { APP_ROUTES } from "../../shared/constants/routes.ts";
-import ThemeToggleButton from "../../shared/ui/ThemeToggleButton.tsx";
+import ThemeSwitcher from "../../shared/ui/ThemeSwitcher.tsx";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Home = () => {
           alignItems: "center",
         }}
       >
-        <ThemeToggleButton />
+        <ThemeSwitcher />
         <Avatar
           style={{
             backgroundColor: "#87d068",

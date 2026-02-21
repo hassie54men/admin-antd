@@ -1,6 +1,6 @@
 import { ConfigProvider, theme as antdTheme } from "antd";
-import { useThemeStore } from "./ThemeStore.tsx";
 import React, { useEffect } from "react";
+import { useThemeStore } from "../../shared/store/ThemeStore.tsx";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const { theme } = useThemeStore();
@@ -42,7 +42,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
           },
           Layout: {
             // ← Вот это меняет цвет шапки (Header)
-            headerBg: theme === "dark" ? "#1f1f1f" : "#ffffff", // тёмный / светлый фон
+            headerBg: theme === "dark" ? "#2C3E50" : "#ADD8E6", // тёмный / светлый фон
             siderBg: theme === "dark" ? "#1f1f1f" : "#ffffff",
             // дополнительно можно настроить:
             headerHeight: 64, // высота шапки

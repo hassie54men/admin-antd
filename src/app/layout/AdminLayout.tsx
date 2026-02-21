@@ -2,7 +2,7 @@ import { Layout } from "antd";
 import { Outlet } from "react-router";
 import AdminHeader from "../../pages/admin-page/AdminHeader.tsx";
 import { AdminMenu } from "../../features/adminMenu/ui/AdminMenu";
-import { useThemeStore } from "../../store/ThemeStore.tsx";
+import { useThemeStore } from "../../shared/store/ThemeStore.tsx";
 
 const { Sider, Content } = Layout;
 
