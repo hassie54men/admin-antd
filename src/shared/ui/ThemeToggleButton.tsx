@@ -1,9 +1,16 @@
-import React from "react";
 import { useThemeStore } from "../../store/ThemeStore.tsx";
+import { Switch } from "antd";
+import { SunOutlined, MoonOutlined } from "@ant-design/icons";
 
-const ThemeToggleButton = ({ children }: { children: React.ReactNode }) => {
+const ThemeToggleButton = () => {
   const { toggleTheme } = useThemeStore();
-  return <button onClick={toggleTheme}>{children}</button>;
+  return (
+    <Switch
+      checkedChildren={<SunOutlined />}
+      unCheckedChildren={<MoonOutlined />}
+      onChange={toggleTheme}
+    />
+  );
 };
 
 export default ThemeToggleButton;

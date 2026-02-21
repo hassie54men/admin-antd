@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router";
 import "./i18n";
 import AppRoutes from "./app/routes/AppRoutes.tsx";
 import { ThemeProvider } from "./store/ThemeProvider.tsx";
+import "./main.css";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>

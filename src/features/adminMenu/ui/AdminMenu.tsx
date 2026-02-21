@@ -32,13 +32,5 @@ export const AdminMenu = (props: MenuProps) => {
     },
   ];
 
-  return (
-    <Menu
-      theme="dark"
-      mode="inline"
-      items={menuItems}
-      selectedKeys={[basePath]}
-      {...props}
-    />
-  );
+  return <Menu items={menuItems} selectedKeys={[basePath]} {...props} />;
 };

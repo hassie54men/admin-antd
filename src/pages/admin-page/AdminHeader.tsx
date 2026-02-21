@@ -19,7 +19,7 @@ const AdminHeader = () => {
         style={{ height: "100%" }}
       >
         <LocaleSwitcher />
-        <ThemeToggleButton>сменить тему</ThemeToggleButton>
+        <ThemeToggleButton />
         <UserMenu />
       </Flex>
     </Header>
