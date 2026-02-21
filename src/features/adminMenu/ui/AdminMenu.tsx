@@ -35,7 +35,7 @@ export const AdminMenu = (props: MenuProps) => {
 
   return (
     <Menu
-      style={{ marginBlock: token.marginMD }}
+      style={{ marginBlock: token.marginMD, paddingInline: token.paddingMD }}
       items={menuItems}
       selectedKeys={[basePath]}
       {...props}
