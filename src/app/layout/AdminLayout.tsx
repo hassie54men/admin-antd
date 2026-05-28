@@ -2,17 +2,19 @@ import { Layout } from "antd";
 import { Outlet } from "react-router";
 import AdminHeader from "../../pages/admin-page/AdminHeader.tsx";
 import { AdminMenu } from "../../features/adminMenu/ui/AdminMenu";
+import { useThemeStore } from "../../shared/store/ThemeStore.tsx";
 
 const { Sider, Content } = Layout;
 
 const AdminLayout = () => {
+  const { theme } = useThemeStore();
   const styles = {
+    theme: { theme },
     layout: { height: "100vh" }, // весь layout на высоту окна
     innerLayout: { height: "100%" }, // правая часть заполняет высоту
     content: {
       padding: 24,
       overflow: "auto", // скролл только в контенте
-      background: "#f5f5f5",
     },
   };
 

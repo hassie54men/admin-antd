@@ -6,13 +6,13 @@
 
 ### Сущности для реализации
 
-| Сущность | List | View | Create | Edit | Delete | Фильтры |
-|----------|------|------|--------|------|--------|---------|
-| Products | ✓ | ✓ | ✓ | ✓ | ✓ | search, category, price range |
-| Users | ✓ | ✓ | ✓ | ✓ | ✓ | search, role |
-| Posts | ✓ | ✓ | ✓ | ✓ | ✓ | search, userId |
-| Todos | ✓ | ✓ | ✓ | ✓ | ✓ | completed, userId |
-| Recipes | ✓ | ✓ | ✓ | ✓ | ✓ | search, tags, mealType |
+| Сущность | List | View | Create | Edit | Delete | Фильтры                       |
+| -------- | ---- | ---- | ------ | ---- | ------ | ----------------------------- |
+| Products | ✓    | ✓    | ✓      | ✓    | ✓      | search, category, price range |
+| Users    | ✓    | ✓    | ✓      | ✓    | ✓      | search, role                  |
+| Posts    | ✓    | ✓    | ✓      | ✓    | ✓      | search, userId                |
+| Todos    | ✓    | ✓    | ✓      | ✓    | ✓      | completed, userId             |
+| Recipes  | ✓    | ✓    | ✓      | ✓    | ✓      | search, tags, mealType        |
 
 ---
 
@@ -37,7 +37,7 @@ interface PaginationParams {
 
 interface SortParams {
   sortBy?: string;
-  order?: 'asc' | 'desc';
+  order?: "asc" | "desc";
 }
 ```
 
@@ -90,7 +90,7 @@ interface Product {
 }
 
 interface ProductFilters {
-  q?: string;           // search query
+  q?: string; // search query
   category?: string;
   minPrice?: number;
   maxPrice?: number;
@@ -111,31 +111,32 @@ interface ProductFilters {
 ### 2.3 React Query хуки
 
 **Файлы:**
+
 - `src/features/products/model/products.queries.ts`
 - `src/features/products/model/products.mutations.ts`
 
 ```typescript
 // queries
-useProductsQuery(params)
-useProductQuery(id)
-useCategoriesQuery()
+useProductsQuery(params);
+useProductQuery(id);
+useCategoriesQuery();
 
 // mutations
-useCreateProductMutation()
-useUpdateProductMutation()
-useDeleteProductMutation()
+useCreateProductMutation();
+useUpdateProductMutation();
+useDeleteProductMutation();
 ```
 
 ### 2.4 Страницы
 
 **Файлы в** `src/features/products/pages/`:
 
-| Файл | Route | Описание |
-|------|-------|----------|
-| `ProductsListPage.tsx` | `/admin/products` | Таблица + фильтры |
-| `ProductViewPage.tsx` | `/admin/products/:id` | Просмотр деталей |
-| `ProductCreatePage.tsx` | `/admin/products/create` | Форма создания |
-| `ProductEditPage.tsx` | `/admin/products/:id/edit` | Форма редактирования |
+| Файл                    | Route                      | Описание             |
+| ----------------------- | -------------------------- | -------------------- |
+| `ProductsListPage.tsx`  | `/admin/products`          | Таблица + фильтры    |
+| `ProductViewPage.tsx`   | `/admin/products/:id`      | Просмотр деталей     |
+| `ProductCreatePage.tsx` | `/admin/products/create`   | Форма создания       |
+| `ProductEditPage.tsx`   | `/admin/products/:id/edit` | Форма редактирования |
 
 ### 2.5 Компоненты
 
@@ -167,7 +168,7 @@ interface User {
   image: string;
   address: Address;
   company: Company;
-  role: 'admin' | 'moderator' | 'user';
+  role: "admin" | "moderator" | "user";
 }
 
 interface UserFilters {
@@ -178,12 +179,12 @@ interface UserFilters {
 
 ### 3.2 Страницы
 
-| Route | Описание |
-|-------|----------|
-| `/admin/users` | Список пользователей |
-| `/admin/users/:id` | Просмотр профиля |
-| `/admin/users/create` | Создание пользователя |
-| `/admin/users/:id/edit` | Редактирование |
+| Route                   | Описание              |
+| ----------------------- | --------------------- |
+| `/admin/users`          | Список пользователей  |
+| `/admin/users/:id`      | Просмотр профиля      |
+| `/admin/users/create`   | Создание пользователя |
+| `/admin/users/:id/edit` | Редактирование        |
 
 ---
 
@@ -210,11 +211,11 @@ interface PostFilters {
 
 ### 4.2 Страницы
 
-| Route | Описание |
-|-------|----------|
-| `/admin/posts` | Список постов |
-| `/admin/posts/:id` | Просмотр поста |
-| `/admin/posts/create` | Создание поста |
+| Route                   | Описание       |
+| ----------------------- | -------------- |
+| `/admin/posts`          | Список постов  |
+| `/admin/posts/:id`      | Просмотр поста |
+| `/admin/posts/create`   | Создание поста |
 | `/admin/posts/:id/edit` | Редактирование |
 
 ---
@@ -239,12 +240,12 @@ interface TodoFilters {
 
 ### 5.2 Страницы
 
-| Route | Описание |
-|-------|----------|
-| `/admin/todos` | Список задач |
-| `/admin/todos/:id` | Просмотр задачи |
-| `/admin/todos/create` | Создание задачи |
-| `/admin/todos/:id/edit` | Редактирование |
+| Route                   | Описание        |
+| ----------------------- | --------------- |
+| `/admin/todos`          | Список задач    |
+| `/admin/todos/:id`      | Просмотр задачи |
+| `/admin/todos/create`   | Создание задачи |
+| `/admin/todos/:id/edit` | Редактирование  |
 
 ---
 
@@ -279,12 +280,12 @@ interface RecipeFilters {
 
 ### 6.2 Страницы
 
-| Route | Описание |
-|-------|----------|
-| `/admin/recipes` | Список рецептов |
-| `/admin/recipes/:id` | Просмотр рецепта |
-| `/admin/recipes/create` | Создание рецепта |
-| `/admin/recipes/:id/edit` | Редактирование |
+| Route                     | Описание         |
+| ------------------------- | ---------------- |
+| `/admin/recipes`          | Список рецептов  |
+| `/admin/recipes/:id`      | Просмотр рецепта |
+| `/admin/recipes/create`   | Создание рецепта |
+| `/admin/recipes/:id/edit` | Редактирование   |
 
 ---
 
@@ -321,6 +322,7 @@ interface RecipeFilters {
 ### 7.3 Dashboard
 
 Главная страница админки со статистикой:
+
 - Количество сущностей каждого типа
 - Быстрые ссылки на разделы
 
@@ -370,14 +372,14 @@ src/features/
 
 Base URL: `https://dummyjson.com`
 
-| Метод | Endpoint | Описание |
-|-------|----------|----------|
-| GET | `/products?limit=10&skip=0` | Список с пагинацией |
-| GET | `/products/search?q=phone` | Поиск |
-| GET | `/products/:id` | Один продукт |
-| POST | `/products/add` | Создание |
-| PUT | `/products/:id` | Обновление |
-| DELETE | `/products/:id` | Удаление |
-| GET | `/products/categories` | Категории |
+| Метод  | Endpoint                    | Описание            |
+| ------ | --------------------------- | ------------------- |
+| GET    | `/products?limit=10&skip=0` | Список с пагинацией |
+| GET    | `/products/search?q=phone`  | Поиск               |
+| GET    | `/products/:id`             | Один продукт        |
+| POST   | `/products/add`             | Создание            |
+| PUT    | `/products/:id`             | Обновление          |
+| DELETE | `/products/:id`             | Удаление            |
+| GET    | `/products/categories`      | Категории           |
 
 Аналогичные эндпоинты для `/users`, `/posts`, `/todos`, `/recipes`.
