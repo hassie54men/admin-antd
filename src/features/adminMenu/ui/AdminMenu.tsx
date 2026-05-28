@@ -1,4 +1,4 @@
-import { Menu, type MenuProps } from "antd";
+import { Menu, type MenuProps, theme } from "antd";
 import { ADMIN_ROUTES } from "../../../shared/constants/routes";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
@@ -7,6 +7,7 @@ export const AdminMenu = (props: MenuProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { token } = theme.useToken();
 
   const basePath = "/" + pathname.split("/")[1];
 
@@ -34,8 +35,7 @@ export const AdminMenu = (props: MenuProps) => {
 
   return (
     <Menu
-      theme="dark"
-      mode="inline"
+      style={{ marginBlock: token.marginMD, paddingInline: token.paddingMD }}
       items={menuItems}
       selectedKeys={[basePath]}
       {...props}

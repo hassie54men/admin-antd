@@ -4,11 +4,15 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import "./i18n";
 import AppRoutes from "./app/routes/AppRoutes.tsx";
+import "./main.css";
+import { ThemeProvider } from "./app/provider/ThemeProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <StrictMode>
-      <AppRoutes />
+      <ThemeProvider>
+        <AppRoutes />
+      </ThemeProvider>
     </StrictMode>
   </BrowserRouter>,
 );

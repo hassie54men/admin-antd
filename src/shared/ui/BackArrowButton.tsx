@@ -9,7 +9,7 @@ const BackArrowButton = (props: ButtonProps) => {
     <Button
       type="text"
       onClick={() => navigate(-1)}
-      icon={<ArrowLeftOutlined style={{ color: "black", fontSize: 18 }} />}
+      icon={<ArrowLeftOutlined />}
       style={{
         padding: 0,
         width: 32,

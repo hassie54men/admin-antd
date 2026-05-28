@@ -19,21 +19,21 @@ import { usePagination } from "@/shared/hooks/usePagination";
 
 ### Параметры
 
-| Параметр | Тип | По умолчанию | Описание |
-|----------|-----|--------------|----------|
-| `options.defaultPageSize` | `number` | `10` | Количество элементов на странице по умолчанию |
+| Параметр                  | Тип      | По умолчанию | Описание                                      |
+| ------------------------- | -------- | ------------ | --------------------------------------------- |
+| `options.defaultPageSize` | `number` | `10`         | Количество элементов на странице по умолчанию |
 
 ### Возвращаемые значения
 
-| Поле | Тип | Описание |
-|------|-----|----------|
-| `page` | `number` | Текущая страница (начиная с 1) |
-| `pageSize` | `number` | Количество элементов на странице |
-| `paginationParams` | `{ skip: number; limit: number }` | Параметры для API запроса |
+| Поле                       | Тип                                        | Описание                                        |
+| -------------------------- | ------------------------------------------ | ----------------------------------------------- |
+| `page`                     | `number`                                   | Текущая страница (начиная с 1)                  |
+| `pageSize`                 | `number`                                   | Количество элементов на странице                |
+| `paginationParams`         | `{ skip: number; limit: number }`          | Параметры для API запроса                       |
 | `getTablePaginationConfig` | `(total: number) => TablePaginationConfig` | Функция для получения конфига пагинации таблицы |
-| `setPage` | `(page: number) => void` | Установить номер страницы |
-| `setPageSize` | `(size: number) => void` | Установить размер страницы |
-| `resetPage` | `() => void` | Сбросить на первую страницу |
+| `setPage`                  | `(page: number) => void`                   | Установить номер страницы                       |
+| `setPageSize`              | `(size: number) => void`                   | Установить размер страницы                      |
+| `resetPage`                | `() => void`                               | Сбросить на первую страницу                     |
 
 ## Примеры использования
 
@@ -73,7 +73,8 @@ const { paginationParams, getTablePaginationConfig } = usePagination({
 ```tsx
 const ProductsTable = () => {
   const { q, setQuery } = useSearchQuery();
-  const { paginationParams, getTablePaginationConfig, resetPage } = usePagination();
+  const { paginationParams, getTablePaginationConfig, resetPage } =
+    usePagination();
   const { data, isLoading } = useGetProducts({ ...paginationParams, q });
 
   const handleSearch = (value: string) => {
@@ -108,7 +109,7 @@ interface GetProductsParams extends PaginationParams {
 export const getProducts = async (params: GetProductsParams) => {
   const res = await apiClient.get<ProductsListResponse>(
     ENDPOINTS.products.list,
-    { params }
+    { params },
   );
   return res.data;
 };
@@ -187,12 +188,12 @@ export default ProductsTable;
 
 Хук автоматически синхронизирует состояние с URL:
 
-| URL | Состояние |
-|-----|-----------|
-| `/products` | `page: 1, pageSize: 10` (дефолтные значения) |
-| `/products?page=3` | `page: 3, pageSize: 10` |
-| `/products?pageSize=25` | `page: 1, pageSize: 25` |
-| `/products?page=2&pageSize=25` | `page: 2, pageSize: 25` |
+| URL                            | Состояние                                    |
+| ------------------------------ | -------------------------------------------- |
+| `/products`                    | `page: 1, pageSize: 10` (дефолтные значения) |
+| `/products?page=3`             | `page: 3, pageSize: 10`                      |
+| `/products?pageSize=25`        | `page: 1, pageSize: 25`                      |
+| `/products?page=2&pageSize=25` | `page: 2, pageSize: 25`                      |
 
 Дефолтные значения не отображаются в URL для чистоты.
 

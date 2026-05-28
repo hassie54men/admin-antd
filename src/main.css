@@ -1,0 +1,17 @@
+html.light,
+html:not(.dark) {
+  background: #f0f2f5; /* или #ffffff */
+  color: #000000;
+}
+
+html.dark {
+  background: #121212; /* чёрный, как на многих тёмных темах */
+  /* или #0a0a0a / #121212 / #0f0f0f — выбирай по вкусу */
+  color: #e6e6e6;
+}
+
+/* Если используешь <Layout> без кастомных стилей */
+.ant-layout,
+.ant-layout-content {
+  background: transparent !important; /* чтобы не мешал глобальному фону */
+}

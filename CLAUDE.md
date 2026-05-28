@@ -46,6 +46,7 @@ src/
 ### Key Patterns
 
 **API Layer**: Features use a three-file pattern in `model/`:
+
 - `[feature].api.ts` - Raw API calls using axios
 - `[feature].queries.ts` - TanStack Query hooks (useQuery)
 - `[feature].mutations.ts` - TanStack Query mutation hooks
@@ -73,6 +74,7 @@ src/
 ## Environment Variables
 
 Create a `.env` file with:
+
 ```
 VITE_API_URL=https://dummyjson.com
 ```
