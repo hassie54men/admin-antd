@@ -10,9 +10,13 @@ export function useGetSingleProduct(id: string) {
   });
 }
 
-export function useGetSearchProduct(query: string) {
+export function useGetSearchProduct(
+  query: string,
+  skip: number,
+  limit: number,
+) {
   return useQuery<ProductsListResponse>({
-    queryKey: QUERY_KEYS.products.search(query),
-    queryFn: () => searchProduct(query),
+    queryKey: QUERY_KEYS.products.search(query, skip, limit),
+    queryFn: () => searchProduct(query, skip, limit),
   });
 }

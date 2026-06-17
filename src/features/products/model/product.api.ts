@@ -13,11 +13,13 @@ export const getSingleProduct = async (id: string): Promise<Product> => {
 
 export const searchProduct = async (
   query: string,
+  skip: number,
+  limit: number,
 ): Promise<ProductsListResponse> => {
   const res = await apiClient.get<ProductsListResponse>(
     ENDPOINTS.products.search,
     {
-      params: { q: query },
+      params: { q: query, skip, limit },
     },
   );
   return res.data;
